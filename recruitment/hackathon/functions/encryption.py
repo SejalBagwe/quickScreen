@@ -1,22 +1,38 @@
-from cryptography.fernet import Fernet
-import os.path
-from os import path
-from simplecrypt import encrypt, decrypt
+# from cryptography.fernet import Fernet
+# import os.path
+# from os import path
+# from simplecrypt import encrypt, decrypt
+# from Crypto.Cipher import XOR
+# import base64
+from math import ceil
 
-from Crypto.Cipher import XOR
-import base64
-
-password_key = 'Trutech1'
+# password_key = 'Trutech1'
+# https://en.wikipedia.org/wiki/Transposition_cipher#Columnar_transposition
+key = 4
 
 
 def encrypt(plaintext):
-    cipher = XOR.new(password_key)
-    return base64.b64encode(cipher.encrypt(plaintext)).decode()
+    ciphertext = [''] * key
+    for col in range(key):
+        position = col
+        while position < len(plaintext):
+            ciphertext[col] += plaintext[position]
+            position += key
+    return ''.join(ciphertext)
 
 
 def decrypt(ciphertext):
-    cipher = XOR.new(password_key)
-    return cipher.decrypt(base64.b64decode(ciphertext)).decode()
+    n_Columns, n_Rows = ceil(len(ciphertext) / key), key
+    n_ShadedBoxes = (n_Columns * n_Rows) - len(ciphertext)
+    plaintext = [''] * n_Columns
+    col, row = 0, 0
+    for symbol in ciphertext:
+        plaintext[col] += symbol
+        col += 1
+        if (col == n_Columns) or (col == n_Columns - 1 and row >= n_Rows - n_ShadedBoxes):
+            col = 0
+            row += 1
+    return ''.join(plaintext)
 
 
 '''
