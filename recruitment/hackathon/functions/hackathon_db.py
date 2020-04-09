@@ -1,6 +1,7 @@
 import datetime
 import sqlite3
 import os
+import pandas as pd
 
 """
 db_path = os.path.join('\\'.join(os.getcwd().split('\\')[:-2])+'\\db', "hackathon.db")
@@ -37,3 +38,17 @@ def insert_data(Name, Mobile, Start_time, End_time, Attempts, Language):
     conn.commit()
     conn.close()
     return
+
+def get_data():
+	db_path = os.path.join(os.getcwd() + '\\db', "hackathon.db")
+	conn = sqlite3.connect(db_path)
+	cur = conn.cursor()
+	cur.execute("SELECT * FROM candidate_info")
+	rows = cur.fetchall()
+	data = pd.DataFrame(rows)
+	data.columns = ['Id','Name','Mobile','Start Time','End Time','Score','Attempts','Language']
+	data.set_index('Id', inplace = True)
+	data.sort_values(by=['Id'], ascending=False,inplace=True)
+	data.reset_index(drop=True,inplace=True)
+	return data
+	

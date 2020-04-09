@@ -1,28 +1,98 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Fluid AI Hackathon Start</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+	label {
+	  color: white;
+	  padding: 8px;
+	}
+	select {
+	  color: black;
+	  width: 30%;
+	  padding: 10px 20px;
+	  border: none;
+	  border-radius: 2px;
+	  background-color: lightblue;
+	}
+
+	input[type=submit] {
+	  background-color: aqua;
+	  color: black;
+	  padding: 12px 20px;
+	  border: none;
+	  border-radius: 4px;
+	  cursor: pointer;
+	}
+	input[type=submit]:hover {
+	  background-color: lightpink;
+	}
+
+	</style>
+	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}" />
+
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}"  >
+
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}"  >
+
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css' %}" >
+
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}"  >
+
+	<link rel="stylesheet" type="text/css" href="{%  static 'vendor/css-hamburgers/hamburgers.min.css' %}" >
+
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}"  >
+
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css'  %}"  >
+
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}" >
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}" >
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" >
+
 </head>
+
 <body>
-Start by giving your Name and Mobile number
-<br><br>
+<body>
+<div class="limiter" style='height:500px;width:450px'>
+<div class="container-login100" style=  "background-image: url({% static 'images/download.jpg' %});" >
+<div class="wrap-login100">
 
-<!-- Start by providing me your mobile number: -->
+<!--class="login100-form validate-form"-->
 
+	<form action = "test_instructions/">
+	<span class="login100-form-logo">
+	<i class="zmdi zmdi-landscape"></i>
+	</span>
+	<span class="login100-form-title p-b-34 p-t-27">
+	DETAILS
+	</span>
 
-<form action="test_instructions/">
-Name: <input type='text' name='name'>
-<br><br>
-Mobile Number: <input type='text' name='mobile'>
-<br><br>
-Choose Language:<br>
-<input type="radio" name="language" value="nodejs"> Nodejs <br>
-<input type="radio" name="language" value="python"> Python <br>
-<input type="radio" name="language" value="linux"> Linux <br>
-<br>
-<input type='submit' text='Start Test'>
-<br><br>
-</form>
+	<div class="wrap-input100 validate-input" data-validate="Enter username">
+		<input class="input100" type="text" name="name" placeholder="FULL NAME">
+		<span class="focus-input100" ></span>
+	</div>
+	<div class="wrap-input100 validate-input" data-validate="Enter password">
+		<input class="input100" type="text" oninput="this.value = this.value.replace(/[^\d]/, '')" name="mobile" placeholder="MOBILE NO">
+		<span class="focus-input100" ></span>
+	</div>
+	<label for="country" >Language</label>
+		<select id="country" name="language" style = 'width:150px'>
+		<option name="language"  value="Nodejs">Nodejs</option>
+		<option name='language'  value="Python">Python</option>
+		<option name="language"  value="Linux">Linux</option>
+		</select>
+		<br><br>
+	<div class="container-login100-form-btn">
+		<input type="submit" value="Submit">
+	</div>
+	
+	</form>
+</div>
+</div>
+</div>
 </body>
 </html>

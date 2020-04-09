@@ -1,74 +1,66 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Fluid AI Hackathon</title>
 </head>
-<body>
+<body style= 'font-family:Times New Roman;background-image:url("{%static "test-background.jpg"%}")'>
+	<p align = 'right' style = "font-size:20px;color:#0000b3;font-family:Times New Roman;"><b style = "color:#000066;">Time: </b>15 Minutes</p>
+	<p style = "font-size:18px;font-family:Times New Roman;color:#0000b3"><b style = "font-size:20px;color:#000066;">Your Question:</b><br>
+	Write a python code to generate a hash which will be validated by a server. The hash will be based on the current epoch time. (epoch time is just a simple way computers use to represent current time as a single float variable. It is the number of seconds that have passed since 1st January, 1970).
+	<br><br>
+	<b style = "font-size:20px;color:#000066;">Method to do:</b><br>
+	You can print the current epoch time in python by writing the following code:
+	<br><i>
+	import time
+	<br>
+	print(time.time())
+	<br>
+	</i>
+	# Output :
+	{% if language == 'python' %}
+	1473636383.373736
+	{% else %}
+	1473636383.373
+	{% endif %}
+	<br><br>
+	First calculate the sum of all individual digits before the fullstop as sum1. Then calculate the sum of all individual digits after the fullstop as sum2.
+	<br>
+	Your hash final hash output will be:
+	<br>
+	(the current epoch time)-sum1-sum2.
+	<br><br>
+	<b style = "font-size:20px;color:#000066;">Expected Output:</b><br>
+	That is, your generated hash output should look something like this:
+	<br>
+	<b>1473636383.373736-44-29</b>
 
-You have about 15 minutes to finish this test. You are free to use the internet:
-<br><br>
+	<br><br><b style = "font-size:20px;color:#000066;">How to Submit:</b><br>
+	Once you have generated this hash in python, take the above hash, and open the following link in your web browser:
+	<br>
+	http://{{ site }}/x/<b>your_hash</b><br>
+	(remember to replace your_hash with the hash that you generated)
 
-<!-- Start by providing me your mobile number: -->
-
-
-Okay now let's start. You need to write a python code to generate a hash which will be validated by a server. The hash will be based on the current epoch time. (epoch time is just a simple way computers use to represent current time as a single float variable. It is the number of seconds that have passed since 1st January, 1970).
-<br><br>
-You can print the current epoch time in python by writing the following code:
-<br><br><i>
-
-import time
-<br><br>
-
-print(time.time())
-<br><br>
-</i>
-# Output of the above would be
-<br>
-{% if language == 'python' %}
-# 1473636383.373736
-{% else %}
-# 1473636383.373
-{% endif %}
-
-<br>
-# Before the fullstop is number of seconds and after the full stop is number of miliseconds
-<br><br>
-
-The hash to be generated is as follows:
-<br>
-First calculate the sum of all individual digits before the fullstop as sum1. Then calculate the sum of all individual digits after the fullstop as sum2.
-<br><br>
-Your hash final hash output will be:
-<br>
-(the current epoch time)-sum1-sum2.
-<br>
-That is, your generated hash output should look something like this:
-<br><br>
-<b>1473636383.373736-44-29</b>
-
-<br><br>
-Once you have generated this hash in python, take the above hash, and open the following link in your web browser:
-<br>
-http://{{ site }}/x/<b>your_hash</b><br>
-(remember to replace your_hash with the hash that you generated)
-
-<br><br>
-That means something like this:
-http://{{ site }}/x/<b>1473636383.373736-44-29</b>
-<br><br>
-This page will tell you if your hash is valid and tell you what to do next. Remember the hash needs to be generated using python code. The quality of your python code will be checked.
-<br>Also the generated hash needs to be of a current time.
-<br><br>
-Marks deducted on generating every unsuccessful Hash.
-<br><br>
-The problem is simple.
-<br><br>
-All the best.
-<br><br>
-You have to write the python code on your local machine and execute it on the same. What are you waiting for, get started :)
-<br><Br>
-If you don't have python installed on your machine, please inform the HR.
+	<br><br>
+	That means something like this:
+	http://{{ site }}/x/<b>1473636383.373736-44-29</b></p>
+	<br>
+	<b style = "font-size:20px;color:#000066;">Remember the following Points:</b><br>
+	<li style = "font-size:18px;color:#0000b3">The hash needs to be generated using python code.</li> 
+	<li style = "font-size:18px;color:#0000b3">The quality of your python code will be checked.</li>
+	<li style = "font-size:18px;color:#0000b3">Also the generated hash needs to be of a current time.</li>
+	<li style = "font-size:18px;color:#0000b3">Marks deducted on generating every unsuccessful Hash.</li>
+	<li style = "font-size:18px;color:#0000b3">After 5 minutes of the test, marks will be deducted for each minute.</li>
+	
+	<p style = "font-size:18px;color:#0000b3"><b style = "font-size:20px;color:#000066;">Note that helps you:</b><br>
+	You have to write the python code on your local machine and execute it on the same.
+	<br>
+	If you don't have python installed on your machine, please inform the HR.</p>
+	<br><br>
+	<p style = "font-size:20px;color:#000066;" align='center'><b>ALL THE BEST</b></p>
+	<br><br>
+	
 
 
 </body>

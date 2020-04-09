@@ -3,7 +3,8 @@ import time
 
 def check_hash(receivedHash):
     try:
-        if receivedHash is "your_hash":
+        print(type(receivedHash))
+        if receivedHash == "1473636383.373736-44-29":
             return 'You need to replace your_hash in the url with an actual hash - eg. 1473636383.373736-45-29'
 
         timeData = receivedHash.split("-")
