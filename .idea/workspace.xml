@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7710c6ac-64dc-47ec-b15c-ad50e1bfd6a5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/show_result.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/functions/hash_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/functions/hash_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,19 +68,35 @@
       <option name="project" value="LOCAL" />
       <updated>1585826042038</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Tried to Make a better UI by sejal.b@trutech.org">
+      <created>1586441058055</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1586441058055</updated>
+    </task>
+    <task id="LOCAL-00004" summary="adding supporting files by sejal.b@trutech.org">
+      <created>1586441273796</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1586441273797</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="chnage in encryption.py and database added by sejal.b@trutech.org" />
     <MESSAGE value="database file added in wrong directory by sejal.b@trutech.org" />
-    <option name="LAST_COMMIT_MESSAGE" value="database file added in wrong directory by sejal.b@trutech.org" />
+    <MESSAGE value="Tried to Make a better UI by sejal.b@trutech.org" />
+    <MESSAGE value="adding supporting files by sejal.b@trutech.org" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding supporting files by sejal.b@trutech.org" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="350" y="0" key="CommitChangelistDialog2" timestamp="1586440886930">
+    <state x="350" y="0" key="CommitChangelistDialog2" timestamp="1586441272237">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="350" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1586440886930" />
+    <state x="350" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1586441272237" />
     <state x="571" y="270" width="424" height="497" key="FileChooserDialogImpl" timestamp="1584272776253">
       <screen x="70" y="27" width="1430" height="972" />
     </state>
@@ -95,14 +106,14 @@
     </state>
     <state x="198" y="20" width="971" height="708" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1586256903275" />
     <state x="277" y="129" width="1016" height="743" key="SettingsEditor/70.27.1430.972@70.27.1430.972" timestamp="1583516998944" />
-    <state x="275" y="100" key="Vcs.Push.Dialog.v2" timestamp="1585826223932">
+    <state x="275" y="100" key="Vcs.Push.Dialog.v2" timestamp="1586441310777">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="100" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1585826223932" />
-    <state x="358" y="213" key="com.intellij.ide.util.TipDialog" timestamp="1586440859898">
+    <state x="275" y="100" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1586441310777" />
+    <state x="358" y="213" key="com.intellij.ide.util.TipDialog" timestamp="1586510719325">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="358" y="213" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1586440859898" />
+    <state x="358" y="213" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1586510719325" />
     <state x="445" y="311" key="com.intellij.ide.util.TipDialog/70.27.1430.972@70.27.1430.972" timestamp="1584272761148" />
     <state x="448" y="234" width="672" height="678" key="search.everywhere.popup" timestamp="1583606870239">
       <screen x="70" y="27" width="1430" height="972" />

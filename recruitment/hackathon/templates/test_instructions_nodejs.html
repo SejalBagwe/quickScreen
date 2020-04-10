@@ -1,83 +1,71 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Fluid AI Hackathon</title>
 </head>
-<body>
-<div style="width:50%;float:left">
-You have about 15 minutes to finish this test. You are free to use the internet:
-<br><br>
+<div>
+<body style= 'font-family:Times New Roman;background-image:url("{%static "test-background.jpg"%}")'>
+	<p align = 'right' style = "font-size:20px;color:#0000b3;font-family:Times New Roman;"><b style = "color:#000066;">Time: </b>15 Minutes</p>	
+	<p style = "font-size:18px;font-family:Times New Roman;color:#0000b3;width:50%;float:left"><b style = "font-size:20px;color:#000066;">Your Question:</b><br>
+	Write a Javascript code to generate a hash which will be validated by a server. The hash will be based on the current epoch time. (epoch time is just a simple way computers use to represent current time as a single float variable. It is the number of seconds that have passed since 1st January, 1970).
+	<br><br>
+	<b style = "font-size:20px;color:#000066;">Method to do:</b><br>
+	You can print the current epoch time in python by writing the following code:
+	<br>
+	<i>
+	console.log(Date.now()/1000)
+	<br><br>
+	</i>
+	#Output: 1473636383.373
+	<br><br>
+	First calculate the sum of all individual digits before the fullstop as sum1. Then calculate the sum of all individual digits after the fullstop as sum2.
+	<br>
+	Your hash final hash output will be:
+	<br>
+	(the current epoch time)-sum1-sum2.
+	<br><br>
+	<b style = "font-size:20px;color:#000066;">Expected Output:</b><br>
+	That is, your generated hash output should look something like this:
+	<br>
+	<b>1473636383.373-44-13</b>
+	<br><br><b style = "font-size:20px;color:#000066;">How to Submit:</b><br>
+	Once you have generated this hash in python, take the above hash, and open the following link in your web browser:
+	<br>
+	<font color="blue">
+	{{ site }}<b>your_hash</b><br>
+	</font>
+	(remember to replace your_hash with the hash that you generated)
+	<br><br>
+	That means something like this:
+	<font color="blue">
+	{{ site }}<b>1473636383.373-44-13</b>
+	</font></p>
+	<br><br>&nbsp;&nbsp;&nbsp;&nbsp;
+	<b style = "font-size:20px;color:#000066;">Remember the following Points:</b><br>
+	<p style = "font-size:18px;color:#0000b3;">&nbsp;&nbsp;&nbsp;&nbsp;1)The hash needs to be generated using Javascript code. <br>
+	&nbsp;&nbsp;&nbsp;&nbsp;2)The quality of your Javascript code will be checked.<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;3)Also the generated hash needs to be of a current time.<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;4)Marks deducted on generating every unsuccessful Hash.<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;5)After 5 minutes of the test, marks will be deducted for each minute.</p>
+	<p style = "font-size:18px;color:#0000b3;" ><b style = "font-size:20px;color:#000066;">&nbsp;&nbsp;&nbsp;&nbsp;Note that helps you:</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;You have to write the Javascript code in the editor on your right.
+	<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;If you don't have Javascript installed on your machine, please inform the HR.</p>
 
-<!-- Start by providing me your mobile number: -->
-
-
-Okay now let's start. You need to write a javascript code to generate a hash which will be validated by a server. The hash will be based on the current epoch time. (epoch time is just a simple way computers use to represent current time as a single float variable. It is the number of seconds that have passed since 1st January, 1970).
-<br><br>
-You can print the current epoch time in javascript by writing the following code:
-<br><br><i>
-
-console.log(Date.now()/1000)
-<br><br>
-</i>
-# Output of the above would be
-<br>
-# 1473636383.373
-
-<br>
-# Before the fullstop is number of seconds and after the full stop is number of miliseconds
-<br><br>
-
-The hash to be generated is as follows:
-<br>
-First calculate the sum of all individual digits before the fullstop as sum1. Then calculate the sum of all individual digits after the fullstop as sum2.
-<br><br>
-Your hash final hash output will be:
-<br>
-(the current epoch time)-sum1-sum2.
-<br>
-That is, your generated hash output should look something like this:
-<br><br>
-<b>1473636383.373-44-13</b>
-
-<br><br>
-Once you have generated this hash in javascript, take the above hash, and open the following link in a new tab in your web browser:
-<br>
-<font color="blue">
-{{ site }}<b>your_hash</b><br>
-</font>
-(remember to replace your_hash with the hash that you generated)
-
-<br><br>
-That means something like this:
-<font color="blue">
-{{ site }}<b>1473636383.373-44-13</b>
-</font>
-<br><br>
-
-This page will tell you if your hash is valid and tell you what to do next. Remember the hash needs to be generated using javascript code. The quality of your javascript code will be checked.
-<br>Also the generated hash needs to be of a current time.
-<br><br>
-The problem is simple.
-<br><br>
-All the best.
-<br><br>
-You have to write the javascript code in the editor on your right. What are you waiting for, get started :)
-<br><Br>
-If you don't have javascript installed on your machine, please inform the HR.
+	<p style = "font-size:20px;color:#000066;" align='center'><b>JAVASCRIPT EDITOR</b></p>
+	<br>
 </div>
-
 <div style="width:40%;float:left;margin-left:7%;border-color:black">
 
-    <h3>JAVASCRIPT EDITOR</h3> <br>
-    <textarea style="width:100%;height:400px;background-color:black;color:white;" name="javascript_code" id="javascript_code">//Write your javascript code here
-
+    <textarea style="width:80%;height:250px;background-color:black;color:white;" name="javascript_code" id="javascript_code">//Write your javascript code here
 console.log(Date.now()/1000);</textarea>
-    <br><br>
-    <input type="button" name="runCode" value="Run Code" onclick="evaluateJavascript()" />
-
-    <div id="resultDiv" style="margin-top:50px;">
-    </div>
+    <br>
+    <input type="button" name="runCode" value="Run Code" onclick="evaluateJavascript()" style="margin-bottom:50px;" />
+	&nbsp;&nbsp;
+    <b id="resultDiv">
+    </b>
 
 </div>
 
@@ -92,7 +80,7 @@ console.originalLog = console.log;
 console.log = function(value)
 {
     console.originalLog(value);
-    consoleValue += "<br>" + value;
+    consoleValue += "" + value;
     return value;
 };
 
@@ -108,11 +96,11 @@ function evaluateJavascript()
     }
     catch (e)
     {
-        consoleValue += "<br>" + e;
+        consoleValue += "" + e;
         //result = e;
     }
 
-    result = "<h3>OUTPUT</h3>" + consoleValue;
+    result = "<b>OUTPUT: </b>" + consoleValue;
 
     consoleValue = "";
 
@@ -144,6 +132,6 @@ window.onbeforeunload = function() {
      return "If you refresh this page your test will end! Are you sure you want to do that?";
 }
 </script>
-
+<br><br>
 </body>
 </html>
