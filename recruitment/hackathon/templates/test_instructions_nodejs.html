@@ -7,7 +7,7 @@
 </head>
 <div>
 <body style= 'font-family:Times New Roman;background-image:url("{%static "test-background.jpg"%}")'>
-	<p align = 'right' style = "font-size:20px;color:#0000b3;font-family:Times New Roman;"><b style = "color:#000066;">Time: </b>15 Minutes</p>	
+	<p id='timer' align = 'right' style = "font-size:20px;color:#0000b3;font-family:Times New Roman;"></p>	
 	<p style = "font-size:18px;font-family:Times New Roman;color:#0000b3;width:50%;float:left"><b style = "font-size:20px;color:#000066;">Your Question:</b><br>
 	Write a Javascript code to generate a hash which will be validated by a server. The hash will be based on the current epoch time. (epoch time is just a simple way computers use to represent current time as a single float variable. It is the number of seconds that have passed since 1st January, 1970).
 	<br><br>
@@ -132,6 +132,25 @@ window.onbeforeunload = function() {
      return "If you refresh this page your test will end! Are you sure you want to do that?";
 }
 </script>
+<script> 
+	var currentdate = new Date(); 
+	var deadline = new Date("{{time}}").getTime(); 
+	var x = setInterval(function() { 
+	var now = new Date().getTime(); 
+	var t = deadline - now; 
+	var days = Math.floor(t / (1000 * 60 * 60 * 24)); 
+	var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60)); 
+	var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60)); 
+	var seconds = Math.floor((t % (1000 * 60)) / 1000); 
+	document.getElementById("timer").innerHTML = "Time: " + hours + "hr " + minutes + "min " + seconds + "sec "; 
+		if (t < 0) { 
+			clearInterval(x);
+			alert("I am an alert box!");
+			
+			window.location.replace("http://127.0.0.1:8000/");
+		} 
+	}, 1000); 
+	</script> 
 <br><br>
 </body>
 </html>

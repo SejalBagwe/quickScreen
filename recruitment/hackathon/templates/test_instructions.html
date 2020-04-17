@@ -6,7 +6,7 @@
     <title>Fluid AI Hackathon</title>
 </head>
 <body style= 'font-family:Times New Roman;background-image:url("{%static "test-background.jpg"%}")'>
-	<p align = 'right' style = "font-size:20px;color:#0000b3;font-family:Times New Roman;"><b style = "color:#000066;">Time: </b>15 Minutes</p>
+	<p id='timer' align = 'right' style = "font-size:20px;color:#0000b3;font-family:Times New Roman;"></p>
 	<p style = "font-size:18px;font-family:Times New Roman;color:#0000b3"><b style = "font-size:20px;color:#000066;">Your Question:</b><br>
 	Write a python code to generate a hash which will be validated by a server. The hash will be based on the current epoch time. (epoch time is just a simple way computers use to represent current time as a single float variable. It is the number of seconds that have passed since 1st January, 1970).
 	<br><br>
@@ -39,12 +39,12 @@
 	<br><br><b style = "font-size:20px;color:#000066;">How to Submit:</b><br>
 	Once you have generated this hash in python, take the above hash, and open the following link in your web browser:
 	<br>
-	http://{{ site }}/x/<b>your_hash</b><br>
+	{{ site }}<b>your_hash</b><br>
 	(remember to replace your_hash with the hash that you generated)
 
 	<br><br>
 	That means something like this:
-	http://{{ site }}/x/<b>1473636383.373736-44-29</b></p>
+	{{ site }}<b>1473636383.373736-44-29</b></p>
 	<br>
 	<b style = "font-size:20px;color:#000066;">Remember the following Points:</b><br>
 	<li style = "font-size:18px;color:#0000b3">The hash needs to be generated using python code.</li> 
@@ -61,6 +61,25 @@
 	<p style = "font-size:20px;color:#000066;" align='center'><b>ALL THE BEST</b></p>
 	<br><br>
 	
+	<script> 
+	var currentdate = new Date(); 
+	var deadline = new Date("{{time}}").getTime(); 
+	var x = setInterval(function() { 
+	var now = new Date().getTime(); 
+	var t = deadline - now; 
+	var days = Math.floor(t / (1000 * 60 * 60 * 24)); 
+	var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60)); 
+	var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60)); 
+	var seconds = Math.floor((t % (1000 * 60)) / 1000); 
+	document.getElementById("timer").innerHTML = "Time: " + hours + "hr " + minutes + "min " + seconds + "sec "; 
+		if (t < 0) { 
+			clearInterval(x);
+			alert("I am an alert box!");
+			
+			window.location.replace("http://127.0.0.1:8000/");
+		} 
+	}, 1000); 
+	</script> 
 
 
 </body>
