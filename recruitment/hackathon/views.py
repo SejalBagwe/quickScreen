@@ -50,7 +50,7 @@ def test_instructions(request):
         else:
             hackathon_db.change_status(key)
 			
-        test_time = str(datetime.datetime.now() + datetime.timedelta(minutes=1))
+        test_time = str(datetime.datetime.now() + datetime.timedelta(minutes=15))
         hackathon_db.insert_data(name, mobile, start_time, test_time, 0, language, 0)
 
         encrypted_mobile = encryption.encrypt(mobile)
@@ -123,7 +123,17 @@ def add_key(request):
     return JsonResponse({'insert_result': result})
     #return render(request, "admin.html", {'insert_result': result})
     #return redirect('/admin_dash', insert_result= result)
-
+	
 def admin_dash(request):
     candidate_data = hackathon_db.get_data()
-    return render(request, 'admin.html', {'data': candidate_data })
+    total = 100/len(candidate_data.index)
+    info = [list(candidate_data['Language'] == 'python').count(True)*total,list(candidate_data['Language'] == 'nodejs').count(True)*total,list(candidate_data['Language'] == 'linux').count(True)*total]
+    return render(request, 'admin_dash.html', {'data': info })
+
+def admin_license(request):
+    return render(request, 'admin_license.html')
+
+def admin_data(request):
+    candidate_data = hackathon_db.get_data()
+    print(candidate_data.head(10))
+    return render(request, 'admin_data.html', {'data': candidate_data })

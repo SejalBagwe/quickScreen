@@ -4,13 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Fluid AI Hackathon</title>
+		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
 </head>
-<body style= 'font-family:Times New Roman;background-image:url("{%static "test-background.jpg"%}")'>
-	<p id='timer' align = 'right' style = "font-size:20px;color:#0000b3;font-family:Times New Roman;"></p>
-	<p style = "font-size:18px;font-family:Times New Roman;color:#0000b3"><b style = "font-size:20px;color:#000066;">Your Question:</b><br>
-	Write a python code to generate a hash which will be validated by a server. The hash will be based on the current epoch time. (epoch time is just a simple way computers use to represent current time as a single float variable. It is the number of seconds that have passed since 1st January, 1970).
-	<br><br>
-	<b style = "font-size:20px;color:#000066;">Method to do:</b><br>
+<body>
+	<p id='timer' align = 'right' style = "font-size:20px;"></p>
+	<h5><b><u>Your Question:</u></b></h5>
+	<p>
+	Write a python code to generate a hash which will be validated by a server. The hash will be based on the current epoch time. (epoch time is just a simple way computers use to represent current time as a single float variable. It is the number of seconds that have passed since 1st January, 1970).</p>
+	
+	<h5><b><u>Method to do:</u></b></h5><p>
 	You can print the current epoch time in python by writing the following code:
 	<br><i>
 	import time
@@ -30,35 +33,34 @@
 	Your hash final hash output will be:
 	<br>
 	(the current epoch time)-sum1-sum2.
-	<br><br>
-	<b style = "font-size:20px;color:#000066;">Expected Output:</b><br>
+	<br></p>
+	<h5><b><u>Expected Output:</u></b></h5><p>
 	That is, your generated hash output should look something like this:
 	<br>
-	<b>1473636383.373736-44-29</b>
-
-	<br><br><b style = "font-size:20px;color:#000066;">How to Submit:</b><br>
+	1473636383.373736-44-29
+	</p>
+	<h5><b><u>How to Submit:</u></b></h5><p>
 	Once you have generated this hash in python, take the above hash, and open the following link in your web browser:
 	<br>
 	{{ site }}<b>your_hash</b><br>
 	(remember to replace your_hash with the hash that you generated)
-
-	<br><br>
-	That means something like this:
-	{{ site }}<b>1473636383.373736-44-29</b></p>
 	<br>
-	<b style = "font-size:20px;color:#000066;">Remember the following Points:</b><br>
-	<li style = "font-size:18px;color:#0000b3">The hash needs to be generated using python code.</li> 
-	<li style = "font-size:18px;color:#0000b3">The quality of your python code will be checked.</li>
-	<li style = "font-size:18px;color:#0000b3">Also the generated hash needs to be of a current time.</li>
-	<li style = "font-size:18px;color:#0000b3">Marks deducted on generating every unsuccessful Hash.</li>
-	<li style = "font-size:18px;color:#0000b3">After 5 minutes of the test, marks will be deducted for each minute.</li>
-	
-	<p style = "font-size:18px;color:#0000b3"><b style = "font-size:20px;color:#000066;">Note that helps you:</b><br>
+	That means something like this:
+	{{ site }}1473636383.373736-44-29</p>
+
+	<h5><b><u>Remember the following Points:</u></b></h5><p>
+	<li>The hash needs to be generated using python code.</li> 
+	<li>The quality of your python code will be checked.</li>
+	<li>Also the generated hash needs to be of a current time.</li>
+	<li>Marks deducted on generating every unsuccessful Hash.</li>
+	<li>After 5 minutes of the test, marks will be deducted for each minute.</li>
+	</p>
+	<h5><b><u>Note that helps you:</u></b></h5><p>
 	You have to write the python code on your local machine and execute it on the same.
 	<br>
 	If you don't have python installed on your machine, please inform the HR.</p>
 	<br><br>
-	<p style = "font-size:20px;color:#000066;" align='center'><b>ALL THE BEST</b></p>
+	<h5 align='center'><b>ALL THE BEST</b></h5>
 	<br><br>
 	
 	<script> 

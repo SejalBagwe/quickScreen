@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fluid AI Hackathon Result</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+		</script>
+	<style>
+	</style>
+</head>
+<body>
+    <div class= 'row'>    
+		<div class="col-sm-3 col-md-3 col-lg-2" >
+			<img src="{%static 'need.png'%}" class="mx-auto d-block" alt="fluid AI" align="right" style="height:50px;width:200px">
+			<h4 align="center" style="color:grey">OUR CLIENTS</h4>
+			<div class="w3-content w3-section" style="height:100px;width:100%">
+			<img class="mySlides1" src="{% static 'Clients\hdfc.png' %}" style="height:100px;width:200px">
+			<img class="mySlides1" src="{% static 'Clients\icici.png' %}" style="height:100px;width:200px">
+			<img class="mySlides1" src="{% static 'Clients\barclays.png' %}" style="height:100px;width:200px">
+			<img class="mySlides1" src="{% static 'Clients\axis.png' %}" style="height:100px;width:200px">
+			<img class="mySlides1" src="{% static 'Clients\bank_of_america.png' %}" style="height:100px;width:200px">
+			</div><br>
+			<div class="w3-content w3-section" style="height:100px;width:100%">
+			<img class="mySlides2" src="{% static 'Clients\jio.png' %}" style="height:100px;width:200px">
+			<img class="mySlides2" src="{% static 'Clients\rbc1.png' %}" style="height:100px;width:200px">
+			<img class="mySlides2" src="{% static 'Clients\vodafone.png' %}" style="height:100px;width:200px">
+			<img class="mySlides2" src="{% static 'Clients\intel.png' %}" style="height:100px;width:200px">
+			<img class="mySlides2" src="{% static 'Clients\jncb.png' %}" style="margin-left:auto;margin-right:auto;height:80px;width:80%">
+			</div><br>
+			<div class="w3-content w3-section" style="height:100px;width:100%">
+			<img class="mySlides3" src="{% static 'Clients\capgemini.png' %}" style="height:100px;width:200px">
+			<img class="mySlides3" src="{% static 'Clients\societe.png' %}" style="height:100px;width:200px">
+			<img class="mySlides3" src="{% static 'Clients\goverment_of_Mauritius.png' %}" style="height:100px;width:200px">
+			<img class="mySlides3" src="{% static 'Clients\deloitte.png' %}" style="height:100px;width:200px">
+			<img class="mySlides3" src="{% static 'Clients\accenture.png' %}" style="height:100px;width:200px">
+			</div><br>
+			<div class="w3-content w3-section" style="height:100px;width:100%">
+			<img class="mySlides4" src="{% static 'Clients\forbes.png' %}" style="margin-left:auto;margin-right:auto;height:80px;width:80%">
+			<img class="mySlides4" src="{% static 'Clients\toyota.png' %}" style="height:100px;width:200px">
+			<img class="mySlides4" src="{% static 'Clients\johnson.png' %}" style="height:100px;width:200px">
+			<img class="mySlides4" src="{% static 'Clients\hero.png' %}" style="height:100px;width:200px">
+			<img class="mySlides4" src="{% static 'Clients\rolls_royce.png' %}" style="height:100px;width:200px">
+			</div><br>
+			<script>
+			var myIndex1 = 0;
+			var myIndex2 = 0;
+			var myIndex3 = 0;
+			var myIndex4 = 0;
+			carousel();
+
+			function carousel() {
+			  var i;
+			  var x1 = document.getElementsByClassName("mySlides1");
+			  var x2 = document.getElementsByClassName("mySlides2");
+			  var x3 = document.getElementsByClassName("mySlides3");
+			  var x4 = document.getElementsByClassName("mySlides4");
+			  for (i = 0; i < x1.length; i++) {
+				x1[i].style.display = "none";  
+				x2[i].style.display = "none"; 
+				x3[i].style.display = "none"; 
+				x4[i].style.display = "none";
+			  }
+			  myIndex1++;
+			  myIndex2++;
+			  myIndex3++;
+			  myIndex4++;
+			  if (myIndex1 > x1.length) {myIndex1 = 1}
+			  if (myIndex2 > x2.length) {myIndex2 = 1}
+			  if (myIndex3 > x3.length) {myIndex3 = 1}
+			  if (myIndex4 > x4.length) {myIndex4 = 1}
+			  x1[myIndex1-1].style.display = "block";  
+			  x2[myIndex2-1].style.display = "block";
+			  x3[myIndex3-1].style.display = "block";
+			  x4[myIndex4-1].style.display = "block";
+			  setTimeout(carousel, 2000); // Change image every 2 seconds
+
+			}
+			</script>
+		</div>
+		<div class="col-sm-9 col-md-9 col-lg-10" style="color:#000066;">
+			<img src="{%static 'fluid-ai-logo.png'%}" class="mx-auto d-block img-rounded" alt="fluid AI" align="center" style="height:80px;width:200px"><br><br>
+			<h2 style="font-family:Times New Roman;" align="center"><b> RESULTS </b></h2><br><br>
+			<p style="font-family:Times New Roman;font-size: 22px;" align="center"> Dear <b>{{msg.0}}</b>,</p>
+			<p style="font-family:Times New Roman;font-size: 22px;" align="center">{{msg.1}}</p><br>
+			{% if msg.1.0 == 's' %}
+				<p style="font-family:Times New Roman;font-size:22px;color:red;" align="center">Congratulations, You are select for next round.</p>
+			{% endif %}	
+		</div>
+	</div>
+	<div> 
+		<div class='bottom' align='center'>
+		
+		<p style="font-family:Times New Roman;color:#000066;font-size:20px;"><b>Address:</b> FluidAI, 7th Floor, Tower A, Naman Midtown, S.B.Marg Elphinstone Road (W), Mumbai-400 013.
+		<b>Phone:</b> +91-22-4920 9000 <b>Email:</b> info@fluid.ai</p>
+		</div>
+	</div>
+</body>
+</html>

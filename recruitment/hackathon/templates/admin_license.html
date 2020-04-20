@@ -1,0 +1,81 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>QuickScreen dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href='{% static "css/style_admin.css"%}'>
+  </head>
+  <body>
+		
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+			<div class="p-4 pt-5">
+		  	<a href="" class="img logo rounded-circle mb-5" style='background-image: url("{% static "admin.png" %}");'></a>
+	        <ul>
+	          
+	          <li>
+	              <a href="/admin_dash/">Dashboard</a>
+	          </li>
+	          <li>
+              <a href="/admin_data/">Candidate Result</a>
+	          </li>
+	          <li>
+              <a href="/admin_license/">License Keys</a>
+	          </li>
+	        </ul>
+
+	      </div>
+    	</nav>
+
+        <!-- Page Content  -->
+      <div id="content" class="p-1 p-md-2">
+          <div class="container-fluid">
+            <button type="button" id="sidebarCollapse" class="btn btn-primary">
+              <i class="fa fa-bars"></i>
+              <span class="sr-only">Toggle Menu</span>
+            </button>
+          </div><br>
+		<form id = "add_key" method = "post"> 
+		{% csrf_token %} 
+		<div class="label control-label" style="font-size:23px;color:Black;">Add New License Key: &nbsp&nbsp
+		<input type='text' style = 'width:250px;background:transparent;margin-bottom:10px;border-radius: 0px;border: 0px;border-bottom: 2px solid black;color:black' name='new_key' placeholder='License Key' oninput="this.value = this.value.replace(/[^\d]/, '')"> &nbsp&nbsp
+		<input type='submit' style = 'width:80px;color:white;background-color:black' value='Add'/>&nbsp&nbsp</div>
+		</form>
+      </div>
+		</div>
+	<script>
+	$(document).ready(function(){
+    // Handles file uploading and dataframe preview
+    $("form#add_key").submit(function (e) {
+        e.preventDefault();
+
+        var formData = new FormData(this);
+
+        $.ajax({
+            url: 'add_key/',
+            type: 'POST',
+            data: formData,
+            success: function (data) {
+                console.log(data);
+				alert(data['insert_result']);
+            },
+        contentType : false,
+        cache : false,
+        processData: false
+        });
+    });
+});
+
+	</script>
+
+    <script src='{% static "js/popper.js"%}'></script>
+    <script src='{% static "js/bootstrap.min.js"%}'></script>
+    <script src='{% static "js/main.js"%}'></script>
+  </body>
+</html>

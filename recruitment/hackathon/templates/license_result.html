@@ -1,12 +1,16 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Fluid AI Hackathon Start</title>
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
 </head>
 <body>
-	<h2 align = 'center'>You entered {{result}}</h2>
+<br>
+	<h2 class="text-warning" align = 'center'><b>You entered {{result}}!!!</b></h2>
 	<br><br>
-	<a href="http://127.0.0.1:8000/">Back to Login page</a>
+	<a class="alert-link" href="http://127.0.0.1:8000/">Back to Login page</a>
 </body>
 </html>

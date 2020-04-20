@@ -1,0 +1,78 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>QuickScreen dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		<script src='{%static "canvasjs/canvasjs.min.js"%}'></script>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href='{% static "css/style_admin.css"%}'>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/admin_table.css' %}" />
+  </head>
+  <body>
+		
+		<div class="wrapper d-flex align-items-stretch">
+		
+			<nav id="sidebar">
+			<div class="p-4 pt-5">
+		  	<a href="" class="img logo rounded-circle mb-5" style='background-image: url("{% static "admin.png" %}");'></a>
+	        <ul>
+	          
+	          <li>
+	              <a href="/admin_dash/">Dashboard</a>
+	          </li>
+	          <li>
+              <a href="/admin_data/">Candidate Result</a>
+	          </li>
+	          <li>
+              <a href="/admin_license/">License Keys</a>
+	          </li>
+	        </ul>
+
+	      </div>
+    	</nav>
+
+        <!-- Page Content  -->
+      <div id="content" class="p- p-md-2">
+          <div class="container-fluid">
+            <button type="button" id="sidebarCollapse" class="btn btn-primary">
+              <i class="fa fa-bars"></i>
+              <span class="sr-only">Toggle Menu</span>
+            </button>
+          </div><br>
+		  <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+		</div>
+		</div>
+	<script>
+		window.onload = function() {
+
+		var chart = new CanvasJS.Chart("chartContainer", {
+			animationEnabled: true,
+			title: {
+				text: "Number of candidates appeared in hackathon"
+			},
+			data: [{
+				type: "pie",
+				startAngle: 240,
+				yValueFormatString: "##0.00\"%\"",
+				indexLabel: "{label} {y}",
+				dataPoints: [
+					{y: {{data.0}}, label: "Python"},
+					{y: {{data.1}}, label: "NodeJS"},
+					{y: {{data.2}}, label: "Linux"}
+				]
+			}]
+		});
+		chart.render();
+
+		}
+		</script>
+    <script src='{% static "js/jquery.min.js"%}'></script>
+    <script src='{% static "js/popper.js"%}'></script>
+    <script src='{% static "js/bootstrap.min.js"%}'></script>
+    <script src='{% static "js/main.js"%}'></script>
+  </body>
+</html>

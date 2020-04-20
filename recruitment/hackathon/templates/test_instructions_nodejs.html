@@ -4,14 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Fluid AI Hackathon</title>
+		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
 </head>
 <div>
-<body style= 'font-family:Times New Roman;background-image:url("{%static "test-background.jpg"%}")'>
-	<p id='timer' align = 'right' style = "font-size:20px;color:#0000b3;font-family:Times New Roman;"></p>	
-	<p style = "font-size:18px;font-family:Times New Roman;color:#0000b3;width:50%;float:left"><b style = "font-size:20px;color:#000066;">Your Question:</b><br>
+<body>
+
+	<p id='timer' align = 'right' style = "font-size:20px;"></p>	
+	<h5><b><u>Your Question:</u></b></h5><p>
 	Write a Javascript code to generate a hash which will be validated by a server. The hash will be based on the current epoch time. (epoch time is just a simple way computers use to represent current time as a single float variable. It is the number of seconds that have passed since 1st January, 1970).
-	<br><br>
-	<b style = "font-size:20px;color:#000066;">Method to do:</b><br>
+	</p>
+	<h5><b><u>Method to do:</u></b></h5><p>
 	You can print the current epoch time in python by writing the following code:
 	<br>
 	<i>
@@ -25,49 +28,37 @@
 	Your hash final hash output will be:
 	<br>
 	(the current epoch time)-sum1-sum2.
-	<br><br>
-	<b style = "font-size:20px;color:#000066;">Expected Output:</b><br>
+	</p>
+	<h5><b><u>Expected Output:</u></b></h5><p>
 	That is, your generated hash output should look something like this:
 	<br>
-	<b>1473636383.373-44-13</b>
-	<br><br><b style = "font-size:20px;color:#000066;">How to Submit:</b><br>
+	<b>1473636383.373-44-13</b></p>
+	<h5><b><u>How to Submit:</u></b></h5><p>
 	Once you have generated this hash in python, take the above hash, and open the following link in your web browser:
 	<br>
-	<font color="blue">
 	{{ site }}<b>your_hash</b><br>
-	</font>
 	(remember to replace your_hash with the hash that you generated)
 	<br><br>
 	That means something like this:
-	<font color="blue">
-	{{ site }}<b>1473636383.373-44-13</b>
-	</font></p>
-	<br><br>&nbsp;&nbsp;&nbsp;&nbsp;
-	<b style = "font-size:20px;color:#000066;">Remember the following Points:</b><br>
-	<p style = "font-size:18px;color:#0000b3;">&nbsp;&nbsp;&nbsp;&nbsp;1)The hash needs to be generated using Javascript code. <br>
-	&nbsp;&nbsp;&nbsp;&nbsp;2)The quality of your Javascript code will be checked.<br>
-	&nbsp;&nbsp;&nbsp;&nbsp;3)Also the generated hash needs to be of a current time.<br>
-	&nbsp;&nbsp;&nbsp;&nbsp;4)Marks deducted on generating every unsuccessful Hash.<br>
-	&nbsp;&nbsp;&nbsp;&nbsp;5)After 5 minutes of the test, marks will be deducted for each minute.</p>
-	<p style = "font-size:18px;color:#0000b3;" ><b style = "font-size:20px;color:#000066;">&nbsp;&nbsp;&nbsp;&nbsp;Note that helps you:</b><br>
-	&nbsp;&nbsp;&nbsp;&nbsp;You have to write the Javascript code in the editor on your right.
-	<br>
-	&nbsp;&nbsp;&nbsp;&nbsp;If you don't have Javascript installed on your machine, please inform the HR.</p>
+	{{ site }}<b>1473636383.373-44-13</b></p>
+	<h5><b><u>Remember the following Points:</u></b></h5>
+	<p>1)The hash needs to be generated using Javascript code. <br>
+	2)The quality of your Javascript code will be checked.<br>
+	3)Also the generated hash needs to be of a current time.<br>
+	4)Marks deducted on generating every unsuccessful Hash.<br>
+	5)After 5 minutes of the test, marks will be deducted for each minute.</p>
+	<h5><b><u>Note that helps you:</u></b></h5>
+	<p>You have to write the Javascript code in the editor on your right.
+	<br>If you don't have Javascript installed on your machine, please inform the HR.</p>
 
-	<p style = "font-size:20px;color:#000066;" align='center'><b>JAVASCRIPT EDITOR</b></p>
-	<br>
-</div>
-<div style="width:40%;float:left;margin-left:7%;border-color:black">
-
-    <textarea style="width:80%;height:250px;background-color:black;color:white;" name="javascript_code" id="javascript_code">//Write your javascript code here
+	<h3 align='center'><b>JAVASCRIPT EDITOR</b></h3>
+    <textarea style="width:70%;height:250px;background-color:black;color:white;margin-left:170px" name="javascript_code" id="javascript_code">//Write your javascript code here
 console.log(Date.now()/1000);</textarea>
     <br>
-    <input type="button" name="runCode" value="Run Code" onclick="evaluateJavascript()" style="margin-bottom:50px;" />
-	&nbsp;&nbsp;
-    <b id="resultDiv">
+    <input class="btn btn-success" type="button" name="runCode" value="Run Code" onclick="evaluateJavascript()" style="margin-bottom:10px;margin-left:200px" /><br>
+    <b id="resultDiv" style="font-size:20px;margin-bottom:200px;margin-left:200px">
     </b>
 
-</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
