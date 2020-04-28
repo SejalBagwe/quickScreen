@@ -43,12 +43,12 @@ def test_instructions(request):
         license_data = hackathon_db.search_license(key)
         print(license_data)
         if type(license_data) == str:
-            if license_data == 'Invalid Key':
+            if license_data == 'An invalid license key.':
                 return render(request, "license_result.html", {'result': license_data})
         elif license_data.loc[0,'Status'] == 'Y':
-            return render(request, "license_result.html", {'result': 'Used Key'})
+            return render(request, "license_result.html", {'result': 'This license key has already been used. Please enter another license key.'})
         else:
-            hackathon_db.change_status(key)
+            r = hackathon_db.change_status('Y',key)
 			
         test_time = str(datetime.datetime.now() + datetime.timedelta(minutes=15))
         hackathon_db.insert_data(name, mobile, start_time, test_time, 0, language, 0)
@@ -87,6 +87,7 @@ def evaluate_hash(request):
     attempts = df.loc[0,'Attempts']
     print(attempts,'\n',type(attempts))
     attempts += 1
+    print(attempts)
     start_time = df.loc[0,'Start Time']
     hackathon_db.update_data(mobile, start_time, end_time, attempts, 0)
 
@@ -114,26 +115,44 @@ def evaluate_hash(request):
 def hello_template(request):
     return render(request, "hello.html", {})
 
-def add_key(request):
+def key_operation(request):
+    op = request.POST['operation']
     key = request.POST['new_key']
     print(request.POST)
     if len(key) != 10:
-        return JsonResponse({'insert_result': 'Add Proper Key'})
-    result = hackathon_db.add_license(request.POST['new_key'])	
-    return JsonResponse({'insert_result': result})
-    #return render(request, "admin.html", {'insert_result': result})
-    #return redirect('/admin_dash', insert_result= result)
-	
+        return JsonResponse({'result': 'Please enter a valid license key.'})	
+    if op == 'add':
+        result = hackathon_db.add_license(request.POST['new_key'])	
+        return JsonResponse({'result': result})
+    else:
+        
+        if op == 'change':
+            result = hackathon_db.change_status('N',key)
+            return JsonResponse({'result': result})
+        if op == 'delete':
+            result = hackathon_db.del_license(key)
+            return JsonResponse({'result': result})
+
 def admin_dash(request):
     candidate_data = hackathon_db.get_data()
+    print(candidate_data.head(200))
     total = 100/len(candidate_data.index)
-    info = [list(candidate_data['Language'] == 'python').count(True)*total,list(candidate_data['Language'] == 'nodejs').count(True)*total,list(candidate_data['Language'] == 'linux').count(True)*total]
-    return render(request, 'admin_dash.html', {'data': info })
+    nCandidate  = [list(candidate_data['Language'].str.lower() == 'python').count(True)*total,list(candidate_data['Language'].str.lower() == 'nodejs').count(True)*total,list(candidate_data['Language'].str.lower() == 'linux').count(True)*total]
+    
+    avgScore = [sum(candidate_data[candidate_data['Language'].str.lower() == 'python']['Score'])/list(candidate_data['Language'].str.lower() == 'python').count(True),sum(candidate_data[candidate_data['Language'].str.lower() == 'nodejs']['Score'])/list(candidate_data['Language'].str.lower() == 'nodejs').count(True),sum(candidate_data[candidate_data['Language'].str.lower() == 'linux']['Score'])/list(candidate_data['Language'].str.lower() == 'linux').count(True)]
+    
+    nAttempt = [sum(candidate_data[candidate_data['Language'].str.lower() == 'python']['Attempts'])/list(candidate_data['Language'].str.lower() == 'python').count(True),sum(candidate_data[candidate_data['Language'].str.lower() == 'nodejs']['Attempts'])/list(candidate_data['Language'].str.lower() == 'nodejs').count(True),sum(candidate_data[candidate_data['Language'].str.lower() == 'linux']['Attempts'])/list(candidate_data['Language'].str.lower() == 'linux').count(True)]
+    
+    pfRate = [list(candidate_data['Score'] != 0).count(True),list(candidate_data['Score'] == 0).count(True)]
+    
+    return render(request, 'admin_dash.html', {'data_num':nCandidate, 'data_score':avgScore, 'data_attempt':nAttempt, 'data_pass':pfRate })
 
 def admin_license(request):
-    return render(request, 'admin_license.html')
+    license_data = hackathon_db.search_license('ALL')
+    status_name = {'Y':'Used','N':'New'}
+    license_data['Status'] = pd.Series(license_data['Status']).map(status_name)
+    return render(request, 'admin_license.html',{'data':license_data})
 
 def admin_data(request):
     candidate_data = hackathon_db.get_data()
-    print(candidate_data.head(10))
     return render(request, 'admin_data.html', {'data': candidate_data })

@@ -42,8 +42,16 @@
               <i class="fa fa-bars"></i>
               <span class="sr-only">Toggle Menu</span>
             </button>
-          </div><br>
-		  <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+          </div>
+		  <div class = 'row'>
+		  <div class = 'col-md-5' id="chartContainer" style="height: 250px;"></div>
+			<div class = 'col-md-6' id="chartContainer1" style="height: 250px;"></div>
+		  </div>
+		  <div class = 'row'><br></div>
+		  <div class = 'row'>
+		  <div class = 'col-md-5' id="chartContainer3" style="height: 250px;"></div>
+			<div class = 'col-md-6' id="chartContainer2" style="height: 250px;"></div>
+		  </div>
 		</div>
 		</div>
 	<script>
@@ -60,16 +68,71 @@
 				yValueFormatString: "##0.00\"%\"",
 				indexLabel: "{label} {y}",
 				dataPoints: [
-					{y: {{data.0}}, label: "Python"},
-					{y: {{data.1}}, label: "NodeJS"},
-					{y: {{data.2}}, label: "Linux"}
+					{y: {{data_num.0}}, label: "Python"},
+					{y: {{data_num.1}}, label: "NodeJS"},
+					{y: {{data_num.2}}, label: "Linux"}
+				]
+			}]
+		});
+		var chart1 = new CanvasJS.Chart("chartContainer1", {
+			animationEnabled: true,
+			theme: "light2", // "light1", "light2", "dark1", "dark2"
+			title:{
+				text: "Average score as per Subjects"
+			},
+			axisY: {
+				title: "Average Score"
+			},
+			data: [{        
+				type: "column",
+				dataPoints:[
+					{y: {{data_score.0}}, label: "Python"},
+					{y: {{data_score.1}}, label: "NodeJS"},
+					{y: {{data_score.2}}, label: "Linux"}
+				]
+			}]
+		});
+		var chart2 = new CanvasJS.Chart("chartContainer2", {
+			animationEnabled: true,
+			title: {
+				text: "Avg number of Attempts require to generate hash"
+			},
+			data: [{
+				type: "bar",
+				dataPoints: [
+					{y: {{data_attempt.0}}, label: "Python"},
+					{y: {{data_attempt.1}}, label: "NodeJS"},
+					{y: {{data_attempt.2}}, label: "Linux"}
+				]
+			}]
+			
+		});
+		var chart3 = new CanvasJS.Chart("chartContainer3", {
+			animationEnabled: true,
+			title: {
+				text: "Pass/fail rate in hackathon"
+			},
+			data: [{
+				type: "doughnut",
+				startAngle: 60,
+				//innerRadius: 60,
+				indexLabelFontSize: 17,
+				indexLabel: "{label} - #percent%",
+				toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+				dataPoints: [
+					{y: {{data_pass.0}}, label: "Pass"},
+					{y: {{data_pass.1}}, label: "Fail"}
 				]
 			}]
 		});
 		chart.render();
+		chart1.render();
+		chart2.render();
+		chart3.render();
 
 		}
 		</script>
+
     <script src='{% static "js/jquery.min.js"%}'></script>
     <script src='{% static "js/popper.js"%}'></script>
     <script src='{% static "js/bootstrap.min.js"%}'></script>

@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-		
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href='{% static "css/style_admin.css"%}'>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/admin_table.css' %}" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href='{% static "css/style_admin.css"%}'>
   </head>
   <body>
 		
@@ -40,30 +40,53 @@
               <i class="fa fa-bars"></i>
               <span class="sr-only">Toggle Menu</span>
             </button>
-          </div><br>
-		<form id = "add_key" method = "post"> 
+          </div>
+		<form id = "key_" method = "post" align = 'center'> 
 		{% csrf_token %} 
-		<div class="label control-label" style="font-size:23px;color:Black;">Add New License Key: &nbsp&nbsp
+		<div class="label control-label" style="font-size:23px;color:Black;">License Key: &nbsp&nbsp
 		<input type='text' style = 'width:250px;background:transparent;margin-bottom:10px;border-radius: 0px;border: 0px;border-bottom: 2px solid black;color:black' name='new_key' placeholder='License Key' oninput="this.value = this.value.replace(/[^\d]/, '')"> &nbsp&nbsp
-		<input type='submit' style = 'width:80px;color:white;background-color:black' value='Add'/>&nbsp&nbsp</div>
-		</form>
+		<select name="operation" style = 'font-size:20px'>
+			<option value="add">Add Key</option>
+			<option value="change">Change status of Key</option>
+			<option value="delete">Delete Key</option>
+		</select>
+		<input type='submit' style = 'width:150px;color:white;background-color:black' value='Submit'/>&nbsp&nbsp
+		</div>
+		</form><br>
+		<table class="table table-fill">
+		<thead style = 'font-size:20px;'>
+			{% for d in data %}
+				<th class="text-center">{{ d }}</th>
+			{% endfor %}
+		</thead>
+		<tbody class="table-hover">
+			{% for iu, record in data.iterrows %}
+				<tr>
+					{% for value in record %}
+						<td class="text-center">{{ value }}</td>
+					{% endfor %}
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
       </div>
 		</div>
 	<script>
 	$(document).ready(function(){
     // Handles file uploading and dataframe preview
-    $("form#add_key").submit(function (e) {
+    $("form#key_").submit(function (e) {
         e.preventDefault();
 
         var formData = new FormData(this);
 
         $.ajax({
-            url: 'add_key/',
+            url: 'key_operation/',
             type: 'POST',
             data: formData,
             success: function (data) {
                 console.log(data);
-				alert(data['insert_result']);
+				window.location.reload();
+				alert(data['result']);
             },
         contentType : false,
         cache : false,

@@ -7,7 +7,7 @@ from django.conf import settings
 urlpatterns = [
     # PAGES
     path('', views.start_test, name='start'),
-	path("admin_license/add_key/", views.add_key, name='add_key'),
+	path("admin_license/key_operation/", views.key_operation, name='add_key'),
 	path("admin_license/", views.admin_license, name='admin_license'),
     path("test_instructions/", views.test_instructions, name='test_instructions'),
     path("hello_template/", views.hello_template, name='helloTemplate'),
