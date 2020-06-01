@@ -1,10 +1,88 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Fluid AI Hackathon</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
 </head>
 <body>
-<h1>Sejal</h1>
+<p id='timer' align = 'right' style = "font-size:20px;"></p>
+	<h5><b><u>Your Question:</u></b></h5>
+	<p>
+	Write a JAVA code to generate a hash which will be validated by a server. The hash will be based on the current epoch time. (epoch time is just a simple way computers use to represent current time as a single float variable. It is the number of seconds that have passed since 1st January, 1970).</p>
+
+	<h5><b><u>Method to do:</u></b></h5><p>
+	You can print the current epoch time in JAVA by writing the following code:<br>
+	<br><i>
+	import java.time.Instant; //import statement
+	<br>
+	System.out.println(String.format("%.3f",(double)Instant.now().toEpochMilli()/1000));
+	<br><br>
+	</i>
+	# Output :
+	{% if language == 'python' %}
+	1473636383.373736
+	{% else %}
+	1473636383.373
+	{% endif %}
+	<br><br>
+	First calculate the sum of all individual digits before the fullstop as sum1. Then calculate the sum of all individual digits after the fullstop as sum2.
+	<br>
+	Your hash final hash output will be:
+	<br>
+	(the current epoch time)-sum1-sum2.
+	<br></p>
+	<h5><b><u>Expected Output:</u></b></h5><p>
+	That is, your generated hash output should look something like this:
+	<br>
+	1473636383.373736-44-29
+	</p>
+	<h5><b><u>How to Submit:</u></b></h5><p>
+	Once you have generated this hash in python, take the above hash, and open the following link in your web browser:
+	<br>
+	{{ site }}<b>your_hash</b><br>
+	(remember to replace your_hash with the hash that you generated)
+	<br>
+	That means something like this:
+	{{ site }}1473636383.373736-44-29</p>
+
+	<h5><b><u>Remember the following Points:</u></b></h5><p>
+	<li>The hash needs to be generated using python code.</li>
+	<li>The quality of your python code will be checked.</li>
+	<li>Also the generated hash needs to be of a current time.</li>
+	<li>Marks deducted on generating every unsuccessful Hash.</li>
+	<li>After 5 minutes of the test, marks will be deducted for each minute.</li>
+	</p>
+	<h5><b><u>Note that helps you:</u></b></h5><p>
+	You have to write the python code on your local machine and execute it on the same.
+	<br>
+	If you don't have python installed on your machine, please inform the HR.</p>
+	<br><br>
+	<h5 align='center'><b>ALL THE BEST</b></h5>
+	<br><br>
+
+	<script>
+	var currentdate = new Date();
+	var deadline = new Date("{{time}}").getTime();
+	var x = setInterval(function() {
+	var now = new Date().getTime();
+	var t = deadline - now;
+	var days = Math.floor(t / (1000 * 60 * 60 * 24));
+	var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
+	var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+	var seconds = Math.floor((t % (1000 * 60)) / 1000);
+	document.getElementById("timer").innerHTML = "Time: " + hours + "hr " + minutes + "min " + seconds + "sec ";
+		if (t < 0) {
+			clearInterval(x);
+			alert("I am an alert box!");
+
+			window.location.replace("http://127.0.0.1:8000/");
+		}
+	}, 1000);
+	</script>
+
+
 </body>
 </html>

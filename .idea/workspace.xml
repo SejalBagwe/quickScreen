@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7710c6ac-64dc-47ec-b15c-ad50e1bfd6a5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions_java.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recruitment/db/hackathon.db" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/db/hackathon.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/templates/start_test.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/start_test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/templates/admin_dash.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/admin_dash.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions_java.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions_java.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recruitment/hackathon/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -107,7 +107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587364502712</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="java basic page Added by sejal.b@trutech.org">
+      <created>1591012064326</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1591012064326</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -118,13 +125,14 @@
     <MESSAGE value="User Interface Update by sejal.b@trutech.org" />
     <MESSAGE value="New Updates by sejal.b@trutech.org" />
     <MESSAGE value="Dashboard Added by sejal.b@trutech.org" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dashboard Added by sejal.b@trutech.org" />
+    <MESSAGE value="java basic page Added by sejal.b@trutech.org" />
+    <option name="LAST_COMMIT_MESSAGE" value="java basic page Added by sejal.b@trutech.org" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="350" y="0" key="CommitChangelistDialog2" timestamp="1587364500302">
+    <state x="350" y="0" key="CommitChangelistDialog2" timestamp="1591012062885">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="350" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587364500302" />
+    <state x="350" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1591012062885" />
     <state x="571" y="270" width="424" height="497" key="FileChooserDialogImpl" timestamp="1584272776253">
       <screen x="70" y="27" width="1430" height="972" />
     </state>
@@ -134,10 +142,10 @@
     </state>
     <state x="198" y="20" width="971" height="708" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1587975321695" />
     <state x="277" y="129" width="1016" height="743" key="SettingsEditor/70.27.1430.972@70.27.1430.972" timestamp="1583516998944" />
-    <state x="275" y="100" key="Vcs.Push.Dialog.v2" timestamp="1587364523522">
+    <state x="275" y="100" key="Vcs.Push.Dialog.v2" timestamp="1591012221655">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="100" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1587364523522" />
+    <state x="275" y="100" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1591012221655" />
     <state x="358" y="213" key="com.intellij.ide.util.TipDialog" timestamp="1588052174647">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

@@ -36,7 +36,7 @@ def test_instructions(request):
             return redirect('/admin_dash')
         elif mobile is "" or len(mobile) != 10:
             return redirect('/')
-        '''	
+
         if len(request.POST['license']) != 10:
             return redirect('/')
         key = request.POST['license']
@@ -49,7 +49,7 @@ def test_instructions(request):
             return render(request, "license_result.html", {'result': 'This license key has already been used. Please enter another license key.'})
         else:
             r = hackathon_db.change_status('Y',key)
-        '''
+
         test_time = str(datetime.datetime.now() + datetime.timedelta(minutes=15))
         hackathon_db.insert_data(name, mobile, start_time, test_time, 0, language, 0)
 
@@ -139,11 +139,11 @@ def admin_dash(request):
     candidate_data = hackathon_db.get_data()
     print(candidate_data.head(200))
     total = 100/len(candidate_data.index)
-    nCandidate  = [list(candidate_data['Language'].str.lower() == 'python').count(True)*total,list(candidate_data['Language'].str.lower() == 'nodejs').count(True)*total,list(candidate_data['Language'].str.lower() == 'linux').count(True)*total]
+    nCandidate  = [list(candidate_data['Language'].str.lower() == 'python').count(True)*total,list(candidate_data['Language'].str.lower() == 'java').count(True)*total,list(candidate_data['Language'].str.lower() == 'nodejs').count(True)*total,list(candidate_data['Language'].str.lower() == 'linux').count(True)*total]
     
-    avgScore = [sum(candidate_data[candidate_data['Language'].str.lower() == 'python']['Score'])/list(candidate_data['Language'].str.lower() == 'python').count(True),sum(candidate_data[candidate_data['Language'].str.lower() == 'nodejs']['Score'])/list(candidate_data['Language'].str.lower() == 'nodejs').count(True),sum(candidate_data[candidate_data['Language'].str.lower() == 'linux']['Score'])/list(candidate_data['Language'].str.lower() == 'linux').count(True)]
+    avgScore = [sum(candidate_data[candidate_data['Language'].str.lower() == 'python']['Score'])/list(candidate_data['Language'].str.lower() == 'python').count(True),sum(candidate_data[candidate_data['Language'].str.lower() == 'java']['Score'])/list(candidate_data['Language'].str.lower() == 'java').count(True),sum(candidate_data[candidate_data['Language'].str.lower() == 'nodejs']['Score'])/list(candidate_data['Language'].str.lower() == 'nodejs').count(True),sum(candidate_data[candidate_data['Language'].str.lower() == 'linux']['Score'])/list(candidate_data['Language'].str.lower() == 'linux').count(True)]
     
-    nAttempt = [sum(candidate_data[candidate_data['Language'].str.lower() == 'python']['Attempts'])/list(candidate_data['Language'].str.lower() == 'python').count(True),sum(candidate_data[candidate_data['Language'].str.lower() == 'nodejs']['Attempts'])/list(candidate_data['Language'].str.lower() == 'nodejs').count(True),sum(candidate_data[candidate_data['Language'].str.lower() == 'linux']['Attempts'])/list(candidate_data['Language'].str.lower() == 'linux').count(True)]
+    nAttempt = [sum(candidate_data[candidate_data['Language'].str.lower() == 'python']['Attempts'])/list(candidate_data['Language'].str.lower() == 'python').count(True),sum(candidate_data[candidate_data['Language'].str.lower() == 'java']['Attempts'])/list(candidate_data['Language'].str.lower() == 'java').count(True),sum(candidate_data[candidate_data['Language'].str.lower() == 'nodejs']['Attempts'])/list(candidate_data['Language'].str.lower() == 'nodejs').count(True),sum(candidate_data[candidate_data['Language'].str.lower() == 'linux']['Attempts'])/list(candidate_data['Language'].str.lower() == 'linux').count(True)]
     
     pfRate = [list(candidate_data['Score'] != 0).count(True),list(candidate_data['Score'] == 0).count(True)]
     
