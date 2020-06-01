@@ -36,7 +36,7 @@ def test_instructions(request):
             return redirect('/admin_dash')
         elif mobile is "" or len(mobile) != 10:
             return redirect('/')
-			
+        '''	
         if len(request.POST['license']) != 10:
             return redirect('/')
         key = request.POST['license']
@@ -49,12 +49,12 @@ def test_instructions(request):
             return render(request, "license_result.html", {'result': 'This license key has already been used. Please enter another license key.'})
         else:
             r = hackathon_db.change_status('Y',key)
-			
+        '''
         test_time = str(datetime.datetime.now() + datetime.timedelta(minutes=15))
         hackathon_db.insert_data(name, mobile, start_time, test_time, 0, language, 0)
 
         encrypted_mobile = encryption.encrypt(mobile)
-		#########test_time retrive
+        #########test_time retrive
         candidate_data = hackathon_db.get_data()
         df = candidate_data[candidate_data['Mobile']==encryption.decrypt(encrypted_mobile)].reset_index(drop=True)
         test_time = df.loc[0,'End Time']
@@ -63,6 +63,8 @@ def test_instructions(request):
         hash_site_link = "http://" + current_site.domain + "/x/" + encrypted_mobile + "/"
         if language == "nodejs":
             return render(request, "test_instructions_nodejs.html", {'site': hash_site_link, 'language': language, 'time': test_time})
+        elif language == "java":
+            return render(request, "test_instructions_java.html", {'site': hash_site_link, 'language': language, 'time': test_time})
         else:			
             return render(request, "test_instructions.html", {'site': hash_site_link, 'language': language, 'time': test_time})
 
@@ -77,7 +79,7 @@ def evaluate_hash(request):
 
     print(received_hash)
     encrypted_mobile = url[2]
-	
+
     mobile = encryption.decrypt(encrypted_mobile)
     print(mobile)
     print(type(mobile))

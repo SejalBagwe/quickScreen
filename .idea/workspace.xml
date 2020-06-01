@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7710c6ac-64dc-47ec-b15c-ad50e1bfd6a5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions_java.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recruitment/db/hackathon.db" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/db/hackathon.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/functions/hackathon_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/functions/hackathon_db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/templates/admin_dash.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/admin_dash.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/templates/admin_license.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/admin_license.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/templates/show_result.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/show_result.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recruitment/hackathon/templates/start_test.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/start_test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recruitment/hackathon/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,7 +34,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/recruitment/hackathon/db" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
