@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7710c6ac-64dc-47ec-b15c-ad50e1bfd6a5" name="Default Changelist" comment="database file location changed by sejal.b@trutech.org">
+    <list default="true" id="7710c6ac-64dc-47ec-b15c-ad50e1bfd6a5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/db/hackathon.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/functions/hackathon_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/functions/hackathon_db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/templates/license_result.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/license_result.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions_java.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions_java.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions_nodejs.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions_nodejs.html" afterDir="false" />
@@ -124,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591020950498</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="database file location changed by sejal.b@trutech.org">
+      <created>1591032227498</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1591032227498</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -137,13 +141,14 @@
     <MESSAGE value="Dashboard Added by sejal.b@trutech.org" />
     <MESSAGE value="java basic page Added by sejal.b@trutech.org" />
     <MESSAGE value="java section Added by sejal.b@trutech.org" />
-    <option name="LAST_COMMIT_MESSAGE" value="java section Added by sejal.b@trutech.org" />
+    <MESSAGE value="database file location changed by sejal.b@trutech.org" />
+    <option name="LAST_COMMIT_MESSAGE" value="database file location changed by sejal.b@trutech.org" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="350" y="0" key="CommitChangelistDialog2" timestamp="1591032040428">
+    <state x="350" y="0" key="CommitChangelistDialog2" timestamp="1591032225987">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="350" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1591032040428" />
+    <state x="350" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1591032225987" />
     <state x="571" y="270" width="424" height="497" key="FileChooserDialogImpl" timestamp="1584272776253">
       <screen x="70" y="27" width="1430" height="972" />
     </state>
