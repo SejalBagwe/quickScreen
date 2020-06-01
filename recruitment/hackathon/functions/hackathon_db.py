@@ -17,7 +17,7 @@ conn.close()
 
 
 def insert_data(Name, Mobile, Start_time, End_time, Attempts, Language, Score):
-    db_path = os.path.join(os.getcwd() + '\\db', "hackathon.db")
+    db_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "db", "hackathon.db")
     conn = sqlite3.connect(db_path)
     cur = conn.cursor()
 
@@ -28,104 +28,105 @@ def insert_data(Name, Mobile, Start_time, End_time, Attempts, Language, Score):
     conn.commit()
     conn.close()
     return
-	
+
 def update_data(Mobile,Start_time, End_time,Attempts,Score):
-	db_path = os.path.join(os.getcwd() + '\\db', "hackathon.db")
-	conn = sqlite3.connect(db_path)
-	cur = conn.cursor()
-	
-	if Score == 100: 
-		n_minutes = round((datetime.datetime.strptime(End_time, '%Y-%m-%d %H:%M:%S.%f') - datetime.datetime.strptime(Start_time, '%Y-%m-%d %H:%M:%S.%f')).seconds / 60)
-		print(n_minutes)
-		if n_minutes > 5:
-			n_minutes -= 5
-		else:
-			n_minutes = 0
-			Score = 100 - (n_minutes * 2) - ((Attempts - 1) * 5)
-	print(Score,'\n',Attempts)
-	query = "UPDATE candidate_info SET end_time = ?, score = ?, attempts = ? WHERE mobile = ?"
-	param = (End_time, int(Score), int(Attempts), Mobile)
-	cur.execute(query, param)
-	conn.commit()
-	conn.close()
-	return
+    db_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "db", "hackathon.db")
+    conn = sqlite3.connect(db_path)
+    cur = conn.cursor()
+
+    if Score == 100:
+        n_minutes = round((datetime.datetime.strptime(End_time, '%Y-%m-%d %H:%M:%S.%f') - datetime.datetime.strptime(Start_time, '%Y-%m-%d %H:%M:%S.%f')).seconds / 60)
+        print(n_minutes)
+        if n_minutes > 5:
+            n_minutes -= 5
+        else:
+            n_minutes = 0
+            Score = 100 - (n_minutes * 2) - ((Attempts - 1) * 5)
+    print(Score,'\n',Attempts)
+    query = "UPDATE candidate_info SET end_time = ?, score = ?, attempts = ? WHERE mobile = ?"
+    param = (End_time, int(Score), int(Attempts), Mobile)
+    cur.execute(query, param)
+    conn.commit()
+    conn.close()
+    return
 
 def get_data():
-	db_path = os.path.join(os.getcwd() + '\\db', "hackathon.db")
-	conn = sqlite3.connect(db_path)
-	cur = conn.cursor()
-	cur.execute("SELECT * FROM candidate_info")
-	rows = cur.fetchall()
-	data = pd.DataFrame(rows)
-	data.columns = ['Id','Name','Mobile','Start Time','End Time','Score','Attempts','Language']
-	data.set_index('Id', inplace = True)
-	data.sort_values(by=['Id'], ascending=False,inplace=True)
-	data.reset_index(drop=True,inplace=True)
-	return data
-	
+    # print(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),'%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%')
+    db_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "db", "hackathon.db")
+    conn = sqlite3.connect(db_path)
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM candidate_info")
+    rows = cur.fetchall()
+    data = pd.DataFrame(rows)
+    data.columns = ['Id','Name','Mobile','Start Time','End Time','Score','Attempts','Language']
+    data.set_index('Id', inplace = True)
+    data.sort_values(by=['Id'], ascending=False,inplace=True)
+    data.reset_index(drop=True,inplace=True)
+    return data
+
 def search_license(Key):
-	db_path = os.path.join(os.getcwd() + '\\db', "hackathon.db")
-	conn = sqlite3.connect(db_path)
-	cur = conn.cursor()
-	if Key == 'ALL':
-		query = "SELECT * FROM license"
-		cur.execute(query)
-	else:
-		query = "SELECT * FROM license where key = ?"
-		param = (Key,)
-		cur.execute(query, param)
-	rows = cur.fetchall()
-	if len(rows) == 0:
-		return "An invalid license key."
-	data = pd.DataFrame(rows)
-	data.columns = ['Key','Status']
-	return data
-	
+    db_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "db", "hackathon.db")
+    conn = sqlite3.connect(db_path)
+    cur = conn.cursor()
+    if Key == 'ALL':
+        query = "SELECT * FROM license"
+        cur.execute(query)
+    else:
+        query = "SELECT * FROM license where key = ?"
+        param = (Key,)
+        cur.execute(query, param)
+    rows = cur.fetchall()
+    if len(rows) == 0:
+        return "An invalid license key."
+    data = pd.DataFrame(rows)
+    data.columns = ['Key','Status']
+    return data
+
 def change_status(Status,Key):
-	db_path = os.path.join(os.getcwd() + '\\db', "hackathon.db")
-	conn = sqlite3.connect(db_path)
-	cur = conn.cursor()
-	
-	cur.execute("SELECT status FROM license where key = ?",(Key,))
-	rows = cur.fetchall()
-	if len(rows) == 0:
-		return "License key does not exists."
-		
-	query = "UPDATE license SET status = ? WHERE key = ?"
-	param = (Status,Key)
-	cur.execute(query, param)
-	conn.commit()
-	conn.close()
-	return 'Status of key change to "New".'
-	
+    db_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "db", "hackathon.db")
+    conn = sqlite3.connect(db_path)
+    cur = conn.cursor()
+
+    cur.execute("SELECT status FROM license where key = ?",(Key,))
+    rows = cur.fetchall()
+    if len(rows) == 0:
+        return "License key does not exists."
+
+    query = "UPDATE license SET status = ? WHERE key = ?"
+    param = (Status,Key)
+    cur.execute(query, param)
+    conn.commit()
+    conn.close()
+    return 'Status of key change to "New".'
+
 def add_license(Key):
-	db_path = os.path.join(os.getcwd() + '\\db', "hackathon.db")
-	conn = sqlite3.connect(db_path)
-	cur = conn.cursor()
-	cur.execute("SELECT status FROM license where key = ?",(Key,))
-	rows = cur.fetchall()
-	if len(rows) != 0:
-		return "License key already exists."
-	
-	query = "INSERT INTO license (key,status) values(?,?);"
-	param = (Key,'N')
-	cur.execute(query, param)
-	conn.commit()
-	conn.close()
-	return "License key has been successfully added."
-	
+    db_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "db", "hackathon.db")
+    conn = sqlite3.connect(db_path)
+    cur = conn.cursor()
+    cur.execute("SELECT status FROM license where key = ?",(Key,))
+    rows = cur.fetchall()
+    if len(rows) != 0:
+        return "License key already exists."
+
+    query = "INSERT INTO license (key,status) values(?,?);"
+    param = (Key,'N')
+    cur.execute(query, param)
+    conn.commit()
+    conn.close()
+    return "License key has been successfully added."
+
 def del_license(Key):
-	db_path = os.path.join(os.getcwd() + '\\db', "hackathon.db")
-	conn = sqlite3.connect(db_path)
-	cur = conn.cursor()
-	cur.execute("SELECT status FROM license where key = ?",(Key,))
-	rows = cur.fetchall()
-	if len(rows) == 0:
-		return "License key does not exists."
-	
-	query = "DELETE FROM license WHERE key = ?"
-	param = (Key,)
-	cur.execute(query, param)
-	conn.commit()
-	conn.close()
-	return "License key has been successfully deleted."
+    db_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "db", "hackathon.db")
+    conn = sqlite3.connect(db_path)
+    cur = conn.cursor()
+    cur.execute("SELECT status FROM license where key = ?",(Key,))
+    rows = cur.fetchall()
+    if len(rows) == 0:
+        return "License key does not exists."
+
+    query = "DELETE FROM license WHERE key = ?"
+    param = (Key,)
+    cur.execute(query, param)
+    conn.commit()
+    conn.close()
+    return "License key has been successfully deleted."
