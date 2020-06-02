@@ -41,7 +41,7 @@ def update_data(Mobile,Start_time, End_time,Attempts,Score):
             n_minutes -= 5
         else:
             n_minutes = 0
-            Score = 100 - (n_minutes * 2) - ((Attempts - 1) * 5)
+        Score = 100 - (n_minutes * 2) - ((int(Attempts) - 1) * 5)
     print(Score,'\n',Attempts)
     query = "UPDATE candidate_info SET end_time = ?, score = ?, attempts = ? WHERE mobile = ?"
     param = (End_time, int(Score), int(Attempts), Mobile)

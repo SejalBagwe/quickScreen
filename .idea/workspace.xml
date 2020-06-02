@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7710c6ac-64dc-47ec-b15c-ad50e1bfd6a5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/db/hackathon.db" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/db/hackathon.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/templates/show_result.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/show_result.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions_java.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions_java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/functions/hackathon_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/functions/hackathon_db.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591032553619</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="some changes sejal.b@trutech.org">
+      <created>1591072428655</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1591072428655</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -158,13 +163,14 @@
     <MESSAGE value="database file location changed by sejal.b@trutech.org" />
     <MESSAGE value="miner chnages by sejal.b@trutech.org" />
     <MESSAGE value="database change&#10; by sejal.b@trutech.org" />
-    <option name="LAST_COMMIT_MESSAGE" value="database change&#10; by sejal.b@trutech.org" />
+    <MESSAGE value="some changes sejal.b@trutech.org" />
+    <option name="LAST_COMMIT_MESSAGE" value="some changes sejal.b@trutech.org" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="350" y="0" key="CommitChangelistDialog2" timestamp="1591032552463">
+    <state x="350" y="0" key="CommitChangelistDialog2" timestamp="1591072426935">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="350" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1591032552463" />
+    <state x="350" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1591072426935" />
     <state x="571" y="270" width="424" height="497" key="FileChooserDialogImpl" timestamp="1584272776253">
       <screen x="70" y="27" width="1430" height="972" />
     </state>
@@ -174,10 +180,10 @@
     </state>
     <state x="198" y="20" width="971" height="708" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1587975321695" />
     <state x="277" y="129" width="1016" height="743" key="SettingsEditor/70.27.1430.972@70.27.1430.972" timestamp="1583516998944" />
-    <state x="275" y="100" key="Vcs.Push.Dialog.v2" timestamp="1591032560900">
+    <state x="275" y="100" key="Vcs.Push.Dialog.v2" timestamp="1591072441671">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="100" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1591032560900" />
+    <state x="275" y="100" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1591072441671" />
     <state x="358" y="213" key="com.intellij.ide.util.TipDialog" timestamp="1591071702656">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
