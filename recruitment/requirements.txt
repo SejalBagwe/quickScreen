@@ -1,3 +1,7 @@
 django
 sqlite3
-sqlite setup on your machine
+datetime
+pandas
+os
+math
+time
