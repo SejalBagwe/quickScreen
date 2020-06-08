@@ -7,6 +7,8 @@ from django.conf import settings
 urlpatterns = [
     # PAGES
     path('', views.start_test, name='start'),
+    path('fluidai_admin/',views.start_admin, name='start_admin'),
+    path("fluidai_admin/admin_check/", views.admin_check, name='admin_check'),
 	path("admin_license/key_operation/", views.key_operation, name='add_key'),
 	path("admin_license/", views.admin_license, name='admin_license'),
     path("test_instructions/", views.test_instructions, name='test_instructions'),

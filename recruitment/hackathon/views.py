@@ -12,10 +12,17 @@ from django.shortcuts import redirect
 from django.contrib.sites.shortcuts import get_current_site
 
 def start_test(request):
-
     return render(request, "start_test.html", {})
-    # text = """<h1>welcome to my app !</h1>"""
-    # return HttpResponse(text)
+
+def start_admin(request):
+    return render(request, "admin_login.html", {})
+
+def admin_check(request):
+    if "password" not in request.POST and "password" not in request.POST:
+        return redirect('/')
+    else:
+        if request.POST['name'].lower() == "hr" and request.POST['password'] == "105":
+            return redirect('/admin_dash')
 
 
 def test_instructions(request):
@@ -31,12 +38,11 @@ def test_instructions(request):
         mobile = request.POST['mobile']
         name = str(request.POST['name'])
         
-        if name.lower() == "hr" and mobile == "105":
-            candidate_data = hackathon_db.get_data()
-            return redirect('/admin_dash')
-        elif mobile is "" or len(mobile) != 10:
+        # if name.lower() == "hr" and mobile == "105":
+        #     candidate_data = hackathon_db.get_data()
+        #     return redirect('/admin_dash')
+        if mobile is "" or len(mobile) != 10:
             return redirect('/')
-
         if len(request.POST['license']) != 10:
             return redirect('/')
         key = request.POST['license']
@@ -157,4 +163,6 @@ def admin_license(request):
 
 def admin_data(request):
     candidate_data = hackathon_db.get_data()
+    candidate_data = candidate_data[['Name','Mobile','Date','Time','Minutes','Score','Attempts','Language']]
+    candidate_data.columns = ['Name','Mobile','Test_Date','Time','Minutes','Score','Attempts','Language']
     return render(request, 'admin_data.html', {'data': candidate_data })
