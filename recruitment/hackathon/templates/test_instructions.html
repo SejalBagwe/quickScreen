@@ -64,7 +64,7 @@
 	<br><br>
 	
 	<script> 
-	var currentdate = new Date(); 
+	var currentdate = new Date();
 	var deadline = new Date("{{time}}").getTime(); 
 	var x = setInterval(function() { 
 	var now = new Date().getTime(); 
@@ -78,7 +78,7 @@
 			clearInterval(x);
 			alert("Sorry Times up!");
 			
-			window.location.replace("/");
+			window.location.replace("end_test/"+"{{mobile}}");
 		} 
 	}, 1000); 
 	</script> 

@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7710c6ac-64dc-47ec-b15c-ad50e1bfd6a5" name="Default Changelist" comment="updated readme">
-      <change afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/admin_login.html" afterDir="false" />
+    <list default="true" id="7710c6ac-64dc-47ec-b15c-ad50e1bfd6a5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/thanku.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/recruitment/static/css/popup.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recruitment/hackathon/db/hackathon.db" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/db/hackathon.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recruitment/hackathon/functions/hackathon_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/functions/hackathon_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/templates/admin_data.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/admin_data.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/templates/show_result.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/show_result.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions_java.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions_java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions_nodejs.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions_nodejs.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recruitment/hackathon/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recruitment/hackathon/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/recruitment/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/recruitment/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,14 +46,15 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Fluid AI1\recruitment\db" />
-      <recent name="$PROJECT_DIR$/recruitment/hackathon/functions" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Fluid AI New\recruitment\hackathon\functions" />
       <recent name="E:\Fluid AI1\recruitment\hackathon\db" />
       <recent name="$PROJECT_DIR$/recruitment/hackathon/templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Fluid AI New\recruitment\static\css" />
+      <recent name="E:\Fluid AI1\recruitment\db" />
+      <recent name="$PROJECT_DIR$/recruitment/hackathon/functions" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -187,7 +194,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591333354253</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Separate admin page and changes in database">
+      <created>1591630153274</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1591630153274</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -205,13 +219,14 @@
     <MESSAGE value="database change&#10; by sejal.b@trutech.org" />
     <MESSAGE value="some changes sejal.b@trutech.org" />
     <MESSAGE value="updated readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated readme" />
+    <MESSAGE value="Separate admin page and changes in database" />
+    <option name="LAST_COMMIT_MESSAGE" value="Separate admin page and changes in database" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="350" y="0" key="CommitChangelistDialog2" timestamp="1591363101755">
+    <state x="350" y="0" key="CommitChangelistDialog2" timestamp="1591630150597">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="350" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1591363101755" />
+    <state x="350" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1591630150597" />
     <state x="571" y="270" width="424" height="497" key="FileChooserDialogImpl" timestamp="1584272776253">
       <screen x="70" y="27" width="1430" height="972" />
     </state>
@@ -221,18 +236,23 @@
     </state>
     <state x="198" y="20" width="971" height="708" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1587975321695" />
     <state x="277" y="129" width="1016" height="743" key="SettingsEditor/70.27.1430.972@70.27.1430.972" timestamp="1583516998944" />
-    <state x="275" y="100" key="Vcs.Push.Dialog.v2" timestamp="1591333360587">
+    <state x="275" y="100" key="Vcs.Push.Dialog.v2" timestamp="1591630163646">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="100" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1591333360587" />
-    <state x="358" y="213" key="com.intellij.ide.util.TipDialog" timestamp="1591621334174">
+    <state x="275" y="100" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1591630163646" />
+    <state x="358" y="213" key="com.intellij.ide.util.TipDialog" timestamp="1591676433747">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="358" y="213" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1591621334174" />
+    <state x="358" y="213" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1591676433747" />
     <state x="445" y="311" key="com.intellij.ide.util.TipDialog/70.27.1430.972@70.27.1430.972" timestamp="1584272761148" />
-    <state x="448" y="234" width="672" height="678" key="search.everywhere.popup" timestamp="1583606870239">
-      <screen x="70" y="27" width="1430" height="972" />
+    <state x="328" y="91" width="710" height="546" key="find.popup" timestamp="1591696218062">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="328" y="91" width="710" height="546" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1591696218062" />
+    <state x="361" y="155" width="672" height="508" key="search.everywhere.popup" timestamp="1591695821487">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="361" y="155" width="672" height="508" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1591695821487" />
     <state x="448" y="234" width="672" height="678" key="search.everywhere.popup/70.27.1430.972@70.27.1430.972" timestamp="1583606870239" />
   </component>
 </project>

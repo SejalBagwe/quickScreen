@@ -20,35 +20,43 @@ def insert_data(Name, Mobile, Start_time, End_time, Attempts, Language, Score):
     db_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "db", "hackathon.db")
     conn = sqlite3.connect(db_path)
     cur = conn.cursor()
-    minutes = 15
+    minutes = 0
     Date = str(datetime.datetime.strptime(Start_time, '%Y-%m-%d %H:%M:%S.%f').date())
     Time = str(datetime.datetime.strptime(Start_time, '%Y-%m-%d %H:%M:%S.%f').time().replace(microsecond=0))
-    query = "INSERT INTO candidate_info (name,mobile,start_time,end_time,score,attempts,language,date,time,minutes) values(?,?,?,?,?,?,?,?,?,?);"
-    param = (Name, Mobile, Start_time, End_time, Score, Attempts, Language,Date,Time,minutes)
+    query = "INSERT INTO candidate_info (name,mobile,start_time,end_time,score,attempts,language,date,time,minutes,Code) values(?,?,?,?,?,?,?,?,?,?,?);"
+    param = (Name, Mobile, Start_time, End_time, Score, Attempts, Language,Date,Time,minutes,"NA")
 
     cur.execute(query, param)
     conn.commit()
     conn.close()
     return
 
-def update_data(Mobile,Start_time, End_time,Attempts,Score):
+def update_data(Mobile,Start_time, End_time,Attempts,Score,Fail=False):
     db_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "db", "hackathon.db")
     conn = sqlite3.connect(db_path)
     cur = conn.cursor()
-    minutes = 15
-    if Score == 100:
-        minutes = round((datetime.datetime.strptime(End_time, '%Y-%m-%d %H:%M:%S.%f') - datetime.datetime.strptime(Start_time, '%Y-%m-%d %H:%M:%S.%f')).seconds / 60)
-        print(minutes)
-        if minutes > 5:
-            n_minutes = minutes - 5
-        else:
-            n_minutes = 0
-        Score = 100 - (n_minutes * 2) - ((int(Attempts) - 1) * 5)
-    print(Score,'\n',Attempts)
-    # query = "UPDATE candidate_info SET end_time = ?, score = ?, attempts = ? WHERE mobile = ?"
-    query = "UPDATE candidate_info SET end_time = ?, score = ?, attempts = ?, minutes = ? WHERE id = (select MAX(id) from candidate_info where mobile = ?)"
-    param = (End_time, int(Score), int(Attempts), int(minutes), Mobile)
-    cur.execute(query, param)
+    if not Fail:
+        minutes = 0
+        Code = "NA"
+        if Score == 100:
+            minutes = round((datetime.datetime.strptime(End_time, '%Y-%m-%d %H:%M:%S.%f') - datetime.datetime.strptime(Start_time, '%Y-%m-%d %H:%M:%S.%f')).seconds / 60)
+            print(minutes)
+            if minutes > 5:
+                n_minutes = minutes - 5
+            else:
+                n_minutes = 0
+            Score = 100 - (n_minutes * 2) - ((int(Attempts) - 1) * 5)
+            Code = "PASS"
+        print(Score,'\n',Attempts)
+        query = "UPDATE candidate_info SET end_time = ?, score = ?, attempts = ?, minutes = ?, code = ? WHERE id = (select MAX(id) from candidate_info where mobile = ?)"
+        param = (End_time, int(Score), int(Attempts), int(minutes), Code, Mobile)
+        cur.execute(query, param)
+    else:
+        minutes = 15
+        Code = "FAIL"
+        query = "UPDATE candidate_info SET minutes = ?, code = ? WHERE id = (select MAX(id) from candidate_info where mobile = ?)"
+        param = (int(minutes), Code, Mobile)
+        cur.execute(query, param)
     conn.commit()
     conn.close()
     return
@@ -61,7 +69,7 @@ def get_data():
     cur.execute("SELECT * FROM candidate_info")
     rows = cur.fetchall()
     data = pd.DataFrame(rows)
-    data.columns = ['Id','Name','Mobile','Start Time','End Time','Score','Attempts','Language','Date','Time','Minutes']
+    data.columns = ['Id','Name','Mobile','Start Time','End Time','Score','Attempts','Language','Date','Time','Minutes','Code']
     data.set_index('Id', inplace = True)
     data.sort_values(by=['Id'], ascending=False,inplace=True)
     data.reset_index(drop=True,inplace=True)

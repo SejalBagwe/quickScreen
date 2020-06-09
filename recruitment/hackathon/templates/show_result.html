@@ -15,10 +15,23 @@
 			<p style="font-family:Times New Roman;font-size: 22px;" class="text-primary" align="center"> Dear <b>{{msg.0}}</b>,</p>
 			<p style="font-family:Times New Roman;font-size: 22px;" class="text-primary" align="center">{{msg.1}}</p><br>
 			{% if msg.1.0 == 's' %}
-				<p class="text-warning" style="font-family:Times New Roman;font-size:22px;color:red;" align="center">‘Congratulations, you have been selected for the next round.’</p>
+		<p class="text-warning" style="font-family:Times New Roman;font-size:22px;color:red;" align="center">‘Congratulations, you have been selected for the next round.’</p>
+		<p class="text-warning" style="font-family:Times New Roman;font-size:22px;color:red;" align="center">‘Please submit your code as text file.’</p><br>
+				<form method="post" enctype="multipart/form-data" action= "{% url 'submission' %}">
+					{% csrf_token %}
+					<div class="row">
+					<div class = "col-md-4"></div>
+						<div class = "col-md-4">
+						<input type="hidden" name="mobile1" value="{{mobile}}">
+						<input type="file" class ='' name="myfile" align="center"><br>
+						<br><br>
+						<button type="submit" class ='btn btn-success btn-lg' style = "margin-left:180px">Upload</button>
+					</div>
+					<div class = "col-md-4"></div>
+					</div>
+				</form>
 			{% else %}
 				<button onclick="goBack()" class="btn btn-success btn-md" align="center">Go Back To Test</button>
-
 			{% endif %}
 
 
@@ -26,6 +39,7 @@
 function goBack() {
   window.history.back();
 }
+
 </script>
 
 </body>

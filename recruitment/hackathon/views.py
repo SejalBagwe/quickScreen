@@ -3,11 +3,13 @@ from .functions import encryption
 from .functions import hackathon_db
 import datetime
 import pandas as pd
+import os
 
 # Create your views here.
+from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
-
+from django.core.files.storage import FileSystemStorage
 from django.shortcuts import redirect
 from django.contrib.sites.shortcuts import get_current_site
 
@@ -60,7 +62,6 @@ def test_instructions(request):
         hackathon_db.insert_data(name, mobile, start_time, test_time, 0, language, 0)
 
         encrypted_mobile = encryption.encrypt(mobile)
-        #########test_time retrive
         candidate_data = hackathon_db.get_data()
         df = candidate_data[candidate_data['Mobile']==encryption.decrypt(encrypted_mobile)].reset_index(drop=True)
         test_time = df.loc[0,'End Time']
@@ -68,11 +69,11 @@ def test_instructions(request):
         # generated special hash link, eg. 127.0.0.1:8000/x/{{encrypted_mobile}}
         hash_site_link = "http://" + current_site.domain + "/x/" + encrypted_mobile + "/"
         if language == "nodejs":
-            return render(request, "test_instructions_nodejs.html", {'site': hash_site_link, 'language': language, 'time': test_time})
+            return render(request, "test_instructions_nodejs.html", {'site': hash_site_link, 'language': language, 'time': test_time, 'mobile':encrypted_mobile})
         elif language == "java":
-            return render(request, "test_instructions_java.html", {'site': hash_site_link, 'language': language, 'time': test_time})
+            return render(request, "test_instructions_java.html", {'site': hash_site_link, 'language': language, 'time': test_time, 'mobile':encrypted_mobile})
         else:			
-            return render(request, "test_instructions.html", {'site': hash_site_link, 'language': language, 'time': test_time})
+            return render(request, "test_instructions.html", {'site': hash_site_link, 'language': language, 'time': test_time, 'mobile':encrypted_mobile})
 
 
 
@@ -118,7 +119,7 @@ def evaluate_hash(request):
     #text = """<h1>""" + result + "---" + received_hash + """</h1>"""
     #return HttpResponse(text)
     name = df.loc[0,'Name']
-    return render(request, "show_result.html", {'msg':[name,result]})
+    return render(request, "show_result.html", {'msg':[name,result],'mobile': mobile })
 
 def hello_template(request):
     return render(request, "hello.html", {})
@@ -141,6 +142,18 @@ def key_operation(request):
             result = hackathon_db.del_license(key)
             return JsonResponse({'result': result})
 
+@csrf_exempt
+def getCode(request):
+    print(request.POST)
+    mob = request.POST['mobile']
+    path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "media")
+    f = open(os.path.join(path,mob+".txt"), "r")
+    text = []
+    for l in f.readlines():
+        text.append(l.replace('\t',"&nbsp; &nbsp; "))
+    return JsonResponse({'text': text})
+
+
 def admin_dash(request):
     candidate_data = hackathon_db.get_data()
     print(candidate_data.head(200))
@@ -162,7 +175,43 @@ def admin_license(request):
     return render(request, 'admin_license.html',{'data':license_data})
 
 def admin_data(request):
+    candidate_data1 = hackathon_db.get_data()
+    candidate_data = candidate_data1[['Name','Mobile','Date','Time','Minutes','Score','Attempts','Language','Code']]
+    candidate_data.columns = ['Name','Mobile','Test_Date','Time','Minutes','Score','Attempts','Language','Code']
+    rows = []
+    for i in range(candidate_data.shape[0]):
+        temp ={}
+        if candidate_data.at[i,'Code'] == "PASS":
+            temp['button_bool'] = True
+        else:
+            temp['button_bool'] = False
+        temp['values'] = []
+        for j in candidate_data.columns:
+            temp['values'].append(candidate_data.at[i,j])
+        rows.append(temp)
+    path = path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),"media")
+    return render(request, 'admin_data.html', {'columns': candidate_data.columns, 'rows':rows})
+
+def end_test(request):
+    print(request.path)
     candidate_data = hackathon_db.get_data()
-    candidate_data = candidate_data[['Name','Mobile','Date','Time','Minutes','Score','Attempts','Language']]
-    candidate_data.columns = ['Name','Mobile','Test_Date','Time','Minutes','Score','Attempts','Language']
-    return render(request, 'admin_data.html', {'data': candidate_data })
+    mobile = encryption.decrypt(request.path.split('/')[3])
+    df = candidate_data[candidate_data['Mobile'] == mobile].reset_index(drop=True)
+    start_time = df.loc[0, 'Start Time']
+    end_time = df.loc[0, 'End Time']
+    attempts = df.loc[0, 'Attempts']
+    hackathon_db.update_data(mobile, start_time, end_time, attempts, 0, Fail=True)
+    print('here')
+    return redirect('/')
+
+def submission(request):
+    uploded_file = request.FILES['myfile']
+    print(uploded_file.name)
+    print(request.POST)
+    mobile = request.POST['mobile1']
+    path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),"media")
+    if mobile+'.txt' in os.listdir(path):
+        os.remove(os.path.join(path,mobile+'.txt'))
+    fs = FileSystemStorage()
+    fs.save(mobile+'.txt',uploded_file)
+    return render(request,'thanku.html')

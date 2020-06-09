@@ -5,12 +5,15 @@
   	<title>QuickScreen dashboard</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-		
+
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href='{% static "css/style_admin.css"%}'>
 		<link rel="stylesheet" type="text/css" href="{% static 'css/admin_table.css' %}" />
+	  	<link rel="stylesheet" type="text/css" href="{% static 'css/popup.css' %}" />
+
   </head>
   <body>
 		
@@ -44,26 +47,74 @@
           </div><br>
 		<table class="table table-fill">
 		<thead style = 'font-size:20px;'>
-			{% for d in data %}
-				<th class="text-center">{{ d }}</th>
+			{% for col in columns %}
+				<th class="text-center">{{ col }}</th>
 			{% endfor %}
 		</thead>
 		<tbody class="table-hover">
-			{% for iu, record in data.iterrows %}
+			{% for record in rows %}
 				<tr>
-					{% for value in record %}
-						<td class="text-center">{{ value }}</td>
+					{% for v in record.values %}
+						{% if v == "PASS" %}
+						<td><button onclick="show_code({{record.values.1}})">Code</button></td>
+						{% else %}
+						<td class="text-center">{{ v }}</td>
+						{% endif %}
 					{% endfor %}
+
 				</tr>
 			{% endfor %}
 		</tbody>
 	</table>
       </div>
+	<div id="myModal" class="modal">
+		<div class="modal-content">
+		<span class="close">&times;</span>
+		<p id="your_content">Some text in the Modal..</p>
 		</div>
+	</div>
+		</div>
+<!--<script src='{% static "js/jquery.min.js"%}'></script>-->
+<script src='{% static "js/popper.js"%}'></script>
+<script src='{% static "js/bootstrap.min.js"%}'></script>
+<script src='{% static "js/main.js"%}'></script>
+<script>
 
-<script src='{% static "js/jquery.min.js"%}'></script>
-    <script src='{% static "js/popper.js"%}'></script>
-    <script src='{% static "js/bootstrap.min.js"%}'></script>
-    <script src='{% static "js/main.js"%}'></script>
+var modal = document.getElementById("myModal");
+var span = document.getElementsByClassName("close")[0];
+
+function show_code(mob){
+
+	$.ajax({
+        url: 'getCode/',
+        method: 'POST',
+        data: {
+          'mobile': mob
+        },
+        success: function (data) {
+          	$("#your_content").empty();
+
+			for(i = 0;i<data['text'].length;i++)
+			$("#your_content").append("<p>"+data['text'][i]+"</p>");
+			}
+			modal.style.display = "block";
+          },
+    });
+
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
   </body>
 </html>
