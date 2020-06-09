@@ -150,7 +150,7 @@ def getCode(request):
     f = open(os.path.join(path,mob+".txt"), "r")
     text = []
     for l in f.readlines():
-        text.append(l.replace('\t',"&nbsp; &nbsp; "))
+        text.append(l.replace('    ',"&nbsp; &nbsp; "))
     return JsonResponse({'text': text})
 
 
@@ -205,13 +205,13 @@ def end_test(request):
     return redirect('/')
 
 def submission(request):
-    uploded_file = request.FILES['myfile']
-    print(uploded_file.name)
-    print(request.POST)
+    # uploded_file = request.FILES['myfile']
+    # print(uploded_file.name)
+    # print(request.POST)
+    code = request.POST['myfile']
     mobile = request.POST['mobile1']
     path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),"media")
-    if mobile+'.txt' in os.listdir(path):
-        os.remove(os.path.join(path,mobile+'.txt'))
-    fs = FileSystemStorage()
-    fs.save(mobile+'.txt',uploded_file)
+    f = open(os.path.join(path,mobile+".txt"), "w")
+    f.write(code)
+    f.close()
     return render(request,'thanku.html')

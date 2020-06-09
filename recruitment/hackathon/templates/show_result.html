@@ -16,20 +16,20 @@
 			<p style="font-family:Times New Roman;font-size: 22px;" class="text-primary" align="center">{{msg.1}}</p><br>
 			{% if msg.1.0 == 's' %}
 		<p class="text-warning" style="font-family:Times New Roman;font-size:22px;color:red;" align="center">‘Congratulations, you have been selected for the next round.’</p>
-		<p class="text-warning" style="font-family:Times New Roman;font-size:22px;color:red;" align="center">‘Please submit your code as text file.’</p><br>
 		<p class="text-warning" style="font-family:Times New Roman;font-size:22px;color:red;" align="center">‘Take a screenshot of this page and Mail this screenshot with your hash and your code to Mr.
 Abhinav Aggarwal at abhinav@fluid.ai’</p>
+		<p class="text-warning" style="font-family:Times New Roman;font-size:22px;color:red;" align="center">‘Please submit your code.’</p>
 				<form method="post" enctype="multipart/form-data" action= "{% url 'submission' %}">
 					{% csrf_token %}
 					<div class="row">
-					<div class = "col-md-4"></div>
-						<div class = "col-md-4">
+					<div class = "col-md-3"></div>
+						<div class = "col-md-9">
 						<input type="hidden" name="mobile1" value="{{mobile}}">
-						<input type="file" class ='' name="myfile" align="center"><br>
+							<textarea name="myfile" rows="10" cols="90" align="center" style="background:#b5c0c7"></textarea><br>
 						<br><br>
-						<button type="submit" class ='btn btn-success btn-lg' style = "margin-left:180px">Upload</button>
+						<button type="submit" class ='btn btn-success btn-lg' style = "margin-left:280px">Submit</button>
 					</div>
-					<div class = "col-md-4"></div>
+					<div class = "col-md-3"></div>
 					</div>
 				</form>
 			{% else %}
