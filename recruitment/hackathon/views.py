@@ -147,10 +147,15 @@ def getCode(request):
     print(request.POST)
     mob = request.POST['mobile']
     path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "media")
-    f = open(os.path.join(path,mob+".txt"), "r")
-    text = []
-    for l in f.readlines():
-        text.append(l.replace('    ',"&nbsp; &nbsp; "))
+    try:
+        f = open(os.path.join(path,mob+".txt"), "r")
+        text = []
+        for l in f.readlines():
+            l = l.replace('    ',"&nbsp; &nbsp; ")
+            l = l.replace('\t', "&nbsp; &nbsp; ")
+            text.append(l)
+    except:
+        text = ["File not found."]
     return JsonResponse({'text': text})
 
 
