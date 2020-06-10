@@ -45,7 +45,7 @@ def update_data(Mobile,Start_time, End_time,Attempts,Score,Fail=False):
                 n_minutes = minutes - 10
             else:
                 n_minutes = 0
-            Score = 100 - (n_minutes * 2) - ((int(Attempts) - 3) * 2)
+            Score = 100 - (n_minutes * 2)
             Code = "PASS"
         print(Score,'\n',Attempts)
         query = "UPDATE candidate_info SET end_time = ?, score = ?, attempts = ?, minutes = ?, code = ? WHERE id = (select MAX(id) from candidate_info where mobile = ?)"
