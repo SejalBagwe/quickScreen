@@ -115,9 +115,6 @@ def evaluate_hash(request):
         attempts = df.loc[0,'Attempts'] + 1
         start_time = df.loc[0,'Start Time']
         hackathon_db.update_data(mobile, start_time, end_time, attempts, 100)
-        #display_result()
-    #text = """<h1>""" + result + "---" + received_hash + """</h1>"""
-    #return HttpResponse(text)
     name = df.loc[0,'Name']
     return render(request, "show_result.html", {'msg':[name,result],'mobile': mobile })
 
@@ -133,14 +130,55 @@ def key_operation(request):
     if op == 'add':
         result = hackathon_db.add_license(request.POST['new_key'])	
         return JsonResponse({'result': result})
+    elif op == 'change':
+        result = hackathon_db.change_status('N',key)
+        return JsonResponse({'result': result})
+    elif op == 'delete':
+        result = hackathon_db.del_license(key)
+        return JsonResponse({'result': result})
+    elif op == 'show':
+        license_data = hackathon_db.search_license(key)
+        print(license_data)
+        if type(license_data) == str:
+            if license_data == 'An invalid license key.':
+                result = 'An invalid license key.'
+        elif license_data.loc[0,'Status'] == 'N':
+            result = 'This '+key+' is New key.'
+        else:
+            result = 'This '+key+' is Used key.'
+        return JsonResponse({'result': result})
+
+def key_file_upload(request):
+
+    f = request.FILES['licensefile']
+    if f.name[-4:] == '.csv':
+
+        # data preprocessing
+        data = pd.read_csv(f)
+        if len(data.columns) == 1:
+            col = 'Phone Number'
+            data.columns = [col]
+            for i in range(data.shape[0]):
+                a = str(data.at[i,col]).split(',')[0]
+                if len(a) != 10:
+                    a = a[-10:]
+                data.at[i,col] = int(a)
+
+            for i in range(data.shape[0]):
+                r = hackathon_db.add_license(int(data.at[i,col]))
+                if r == 'License key already exists.':
+
+                    hackathon_db.change_status(data.at[i,'status'],int(data.at[i,col]))
+
+            result = 'Uploaded Successfully.'
+        else:
+            result = 'Only 1 column is allowed.'
+
     else:
-        
-        if op == 'change':
-            result = hackathon_db.change_status('N',key)
-            return JsonResponse({'result': result})
-        if op == 'delete':
-            result = hackathon_db.del_license(key)
-            return JsonResponse({'result': result})
+        result = 'Sorry! Upload only csv file.'
+
+    return JsonResponse({'result':result})
+
 
 @csrf_exempt
 def getCode(request):

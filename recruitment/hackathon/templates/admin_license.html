@@ -49,10 +49,18 @@
 			<option value="add">Add Key</option>
 			<option value="change">Change status of Key</option>
 			<option value="delete">Delete Key</option>
+			<option value="show">Show Status</option>
 		</select>
 		<input type='submit' style = 'width:150px;color:white;background-color:black' value='Submit'/>&nbsp&nbsp
 		</div>
 		</form><br>
+		  <form id = "key_file" method = "post" align = 'center'>
+		  {% csrf_token %}
+		  <div class="label control-label" style="font-size:23px;color:Black;">Upload License Keys File: &nbsp&nbsp
+			  <input type="file" id="licensefile" name="licensefile">
+			  <input type='submit' style = 'width:100px;color:white;background-color:black' value='Upload'/>
+		  </div><br>
+		  </form>
 		<table class="table table-fill">
 		<thead style = 'font-size:20px;'>
 			{% for d in data %}
@@ -81,6 +89,25 @@
 
         $.ajax({
             url: 'key_operation/',
+            type: 'POST',
+            data: formData,
+            success: function (data) {
+                console.log(data);
+				window.location.reload();
+				alert(data['result']);
+            },
+        contentType : false,
+        cache : false,
+        processData: false
+        });
+    });
+    $("form#key_file").submit(function (e) {
+        e.preventDefault();
+
+        var formData = new FormData(this);
+
+        $.ajax({
+            url: 'key_file_upload/',
             type: 'POST',
             data: formData,
             success: function (data) {

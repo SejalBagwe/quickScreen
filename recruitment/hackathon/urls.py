@@ -11,6 +11,7 @@ urlpatterns = [
     path('submission/',views.submission, name='submission'),
     path("fluidai_admin/admin_check/", views.admin_check, name='admin_check'),
 	path("admin_license/key_operation/", views.key_operation, name='add_key'),
+    path("admin_license/key_file_upload/", views.key_file_upload, name='add_key_file'),
 	path("admin_license/", views.admin_license, name='admin_license'),
     path("test_instructions/", views.test_instructions, name='test_instructions'),
     path("hello_template/", views.hello_template, name='helloTemplate'),
