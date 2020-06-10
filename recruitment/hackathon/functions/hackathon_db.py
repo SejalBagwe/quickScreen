@@ -41,18 +41,18 @@ def update_data(Mobile,Start_time, End_time,Attempts,Score,Fail=False):
         if Score == 100:
             minutes = round((datetime.datetime.strptime(End_time, '%Y-%m-%d %H:%M:%S.%f') - datetime.datetime.strptime(Start_time, '%Y-%m-%d %H:%M:%S.%f')).seconds / 60)
             print(minutes)
-            if minutes > 5:
-                n_minutes = minutes - 5
+            if minutes > 10:
+                n_minutes = minutes - 10
             else:
                 n_minutes = 0
-            Score = 100 - (n_minutes * 2) - ((int(Attempts) - 1) * 5)
+            Score = 100 - (n_minutes * 2) - ((int(Attempts) - 3) * 2)
             Code = "PASS"
         print(Score,'\n',Attempts)
         query = "UPDATE candidate_info SET end_time = ?, score = ?, attempts = ?, minutes = ?, code = ? WHERE id = (select MAX(id) from candidate_info where mobile = ?)"
         param = (End_time, int(Score), int(Attempts), int(minutes), Code, Mobile)
         cur.execute(query, param)
     else:
-        minutes = 15
+        minutes = 25
         Code = "FAIL"
         query = "UPDATE candidate_info SET minutes = ?, code = ? WHERE id = (select MAX(id) from candidate_info where mobile = ?)"
         param = (int(minutes), Code, Mobile)

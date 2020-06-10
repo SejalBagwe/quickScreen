@@ -58,7 +58,7 @@ def test_instructions(request):
         else:
             r = hackathon_db.change_status('Y',key)
 
-        test_time = str(datetime.datetime.now() + datetime.timedelta(minutes=15))
+        test_time = str(datetime.datetime.now() + datetime.timedelta(minutes=25))
         hackathon_db.insert_data(name, mobile, start_time, test_time, 0, language, 0)
 
         encrypted_mobile = encryption.encrypt(mobile)
