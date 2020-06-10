@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7710c6ac-64dc-47ec-b15c-ad50e1bfd6a5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Recruitment_Test_Django.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Recruitment_Test_Django.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/recruitment/static/css/loader.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recruitment/hackathon/db/hackathon.db" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/db/hackathon.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/functions/hackathon_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/functions/hackathon_db.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recruitment/hackathon/templates/admin_license.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/admin_license.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recruitment/hackathon/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -230,7 +229,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591721347700</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="file load function">
+      <created>1591770079412</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1591770079412</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -254,13 +260,14 @@
     <MESSAGE value="changes" />
     <MESSAGE value="textarea added" />
     <MESSAGE value="chnages" />
-    <option name="LAST_COMMIT_MESSAGE" value="chnages" />
+    <MESSAGE value="file load function" />
+    <option name="LAST_COMMIT_MESSAGE" value="file load function" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="350" y="0" key="CommitChangelistDialog2" timestamp="1591721346455">
+    <state x="350" y="0" key="CommitChangelistDialog2" timestamp="1591770076932">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="350" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1591721346455" />
+    <state x="350" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1591770076932" />
     <state x="479" y="182" width="424" height="497" key="FileChooserDialogImpl" timestamp="1591763141205">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

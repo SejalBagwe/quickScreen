@@ -126,18 +126,25 @@ def add_license(Key):
     conn.close()
     return "License key has been successfully added."
 
-def del_license(Key):
+def del_license(Key,All=False):
     db_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "db", "hackathon.db")
     conn = sqlite3.connect(db_path)
     cur = conn.cursor()
-    cur.execute("SELECT status FROM license where key = ?",(Key,))
-    rows = cur.fetchall()
-    if len(rows) == 0:
-        return "License key does not exists."
+    if not All:
+        cur.execute("SELECT status FROM license where key = ?",(Key,))
+        rows = cur.fetchall()
+        if len(rows) == 0:
+            return "License key does not exists."
 
-    query = "DELETE FROM license WHERE key = ?"
-    param = (Key,)
-    cur.execute(query, param)
+        query = "DELETE FROM license WHERE key = ?"
+        param = (Key,)
+        cur.execute(query, param)
+        result = "License key has been successfully deleted."
+    else:
+        query = "DELETE FROM license"
+        cur.execute(query)
+        result = "All the license keys has been successfully deleted."
+
     conn.commit()
     conn.close()
-    return "License key has been successfully deleted."
+    return result

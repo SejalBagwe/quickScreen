@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/admin_table.css' %}" />
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href='{% static "css/style_admin.css"%}'>
+	<link rel="stylesheet" href='{% static "css/loader.css"%}'>
   </head>
   <body>
 		
@@ -41,6 +42,7 @@
               <span class="sr-only">Toggle Menu</span>
             </button>
           </div>
+		  		  <div id="loader"></div>
 		<form id = "key_" method = "post" align = 'center'> 
 		{% csrf_token %} 
 		<div class="label control-label" style="font-size:23px;color:Black;">License Key: &nbsp&nbsp
@@ -50,6 +52,7 @@
 			<option value="change">Change status of Key</option>
 			<option value="delete">Delete Key</option>
 			<option value="show">Show Status</option>
+			<option value="deleteAll">Delete All License keys</option>
 		</select>
 		<input type='submit' style = 'width:150px;color:white;background-color:black' value='Submit'/>&nbsp&nbsp
 		</div>
@@ -77,16 +80,18 @@
 			{% endfor %}
 		</tbody>
 	</table>
+
       </div>
 		</div>
 	<script>
 	$(document).ready(function(){
+	$('#loader').hide();
     // Handles file uploading and dataframe preview
     $("form#key_").submit(function (e) {
         e.preventDefault();
 
         var formData = new FormData(this);
-
+		if (confirm('Are you sure you want to perform this operation?')) {
         $.ajax({
             url: 'key_operation/',
             type: 'POST',
@@ -100,18 +105,20 @@
         cache : false,
         processData: false
         });
+        }
     });
     $("form#key_file").submit(function (e) {
         e.preventDefault();
 
         var formData = new FormData(this);
-
+		$('#loader').show();
         $.ajax({
             url: 'key_file_upload/',
             type: 'POST',
             data: formData,
             success: function (data) {
                 console.log(data);
+                $('#loader').hide();
 				window.location.reload();
 				alert(data['result']);
             },

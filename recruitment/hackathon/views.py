@@ -136,6 +136,9 @@ def key_operation(request):
     elif op == 'delete':
         result = hackathon_db.del_license(key)
         return JsonResponse({'result': result})
+    elif op == 'deleteAll':
+        result = hackathon_db.del_license(key, All= True)
+        return JsonResponse({'result': result})
     elif op == 'show':
         license_data = hackathon_db.search_license(key)
         print(license_data)
@@ -151,10 +154,10 @@ def key_operation(request):
 def key_file_upload(request):
 
     f = request.FILES['licensefile']
-    if f.name[-4:] == '.csv':
+    if f.name[-5:] == '.xlsx':
 
         # data preprocessing
-        data = pd.read_csv(f)
+        data = pd.read_excel(f)
         if len(data.columns) == 1:
             col = 'Phone Number'
             data.columns = [col]
@@ -163,7 +166,7 @@ def key_file_upload(request):
                 if len(a) != 10:
                     a = a[-10:]
                 data.at[i,col] = int(a)
-
+            data['status'] = 'N'
             for i in range(data.shape[0]):
                 r = hackathon_db.add_license(int(data.at[i,col]))
                 if r == 'License key already exists.':
@@ -175,7 +178,7 @@ def key_file_upload(request):
             result = 'Only 1 column is allowed.'
 
     else:
-        result = 'Sorry! Upload only csv file.'
+        result = 'Sorry! Upload only excel file.'
 
     return JsonResponse({'result':result})
 
