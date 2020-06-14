@@ -67,7 +67,7 @@ def test_instructions(request):
         test_time = df.loc[0,'End Time']
         print(test_time)
         # generated special hash link, eg. 127.0.0.1:8000/x/{{encrypted_mobile}}
-        hash_site_link = "http://" + current_site.domain + "/x/" + encrypted_mobile + "/"
+        hash_site_link = "https://" + current_site.domain + "/x/" + encrypted_mobile + "/"
         if language == "nodejs":
             return render(request, "test_instructions_nodejs.html", {'site': hash_site_link, 'language': language, 'time': test_time, 'mobile':encrypted_mobile})
         elif language == "java":
