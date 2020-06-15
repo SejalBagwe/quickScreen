@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7710c6ac-64dc-47ec-b15c-ad50e1bfd6a5" name="Default Changelist" comment="">
+    <list default="true" id="7710c6ac-64dc-47ec-b15c-ad50e1bfd6a5" name="Default Changelist" comment="instruction changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/functions/hackathon_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/functions/hackathon_db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/functions/hash_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/functions/hash_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/templates/show_result.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/show_result.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/templates/start_test.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/start_test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions_java.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions_java.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions_nodejs.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions_nodejs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/recruitment/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/recruitment/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
