@@ -91,6 +91,8 @@ def search_license(Key):
         return "An invalid license key."
     data = pd.DataFrame(rows)
     data.columns = ['Key','Status']
+    data.sort_values(by=['Status'], ascending=False, inplace=True)
+    data.reset_index(drop=True, inplace=True)
     return data
 
 def change_status(Status,Key):
