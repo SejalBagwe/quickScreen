@@ -4,7 +4,6 @@
     <list default="true" id="7710c6ac-64dc-47ec-b15c-ad50e1bfd6a5" name="Default Changelist" comment="instruction changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recruitment/hackathon/db/hackathon.db" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/db/hackathon.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +19,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1XstWCSqWiCft9VUAM8bNOJlidS" />
@@ -320,7 +324,6 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="198" y="20" width="971" height="708" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1591763152543" />
-    <state x="277" y="129" width="1016" height="743" key="SettingsEditor/70.27.1430.972@70.27.1430.972" timestamp="1583516998944" />
     <state x="275" y="100" key="Vcs.Push.Dialog.v2" timestamp="1591957997358">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -334,6 +337,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="328" y="91" width="710" height="546" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1591696218062" />
+    <state x="399" y="167" key="git4idea.merge.GitPullDialog" timestamp="1592211498712">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="399" y="167" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1592211498712" />
     <state x="361" y="155" width="672" height="508" key="search.everywhere.popup" timestamp="1591695821487">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
