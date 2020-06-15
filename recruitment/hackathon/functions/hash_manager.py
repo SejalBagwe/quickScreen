@@ -25,7 +25,7 @@ def check_hash(receivedHash):
             timeDifInSeconds = int(str(time.time()).split(".")[0]) - int(str(jointTime).split(".")[0])
 
             if timeDifInSeconds > -300 and timeDifInSeconds < 300:
-                return 'success your hash worked - Please go to the HR Manager with code Z' + str(t[4]) + str(t[3]) + str(
+                return 'Success your hash worked - Your code Z' + str(t[4]) + str(t[3]) + str(
                     t[2]) + str(t[1])
             else:
                 return 'failed due to time mismatch - hash was stale - please generate a hash of a more recent time. Hash is ' + str(

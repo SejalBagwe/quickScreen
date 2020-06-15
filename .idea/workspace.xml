@@ -4,7 +4,13 @@
     <list default="true" id="7710c6ac-64dc-47ec-b15c-ad50e1bfd6a5" name="Default Changelist" comment="instruction changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recruitment/hackathon/db/hackathon.db" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/db/hackathon.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/functions/hackathon_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/functions/hackathon_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/functions/hash_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/functions/hash_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/templates/show_result.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/show_result.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/templates/start_test.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/start_test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions_java.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions_java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions_nodejs.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/templates/test_instructions_nodejs.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -275,7 +281,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591957976973</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="instruction changes">
+      <created>1592120128124</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1592120128124</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -302,15 +315,15 @@
     <MESSAGE value="Changed Time Zone" />
     <MESSAGE value="Change in time and score formula also updated README.md" />
     <MESSAGE value="Change in score formula" />
-    <MESSAGE value="instruction changes" />
     <MESSAGE value="Some changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some changes" />
+    <MESSAGE value="instruction changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="instruction changes" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="350" y="0" key="CommitChangelistDialog2" timestamp="1591957974427">
+    <state x="350" y="0" key="CommitChangelistDialog2" timestamp="1592120126185">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="350" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1591957974427" />
+    <state x="350" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1592120126185" />
     <state x="479" y="182" width="424" height="497" key="FileChooserDialogImpl" timestamp="1591763141205">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -320,15 +333,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="198" y="20" width="971" height="708" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1591763152543" />
-    <state x="277" y="129" width="1016" height="743" key="SettingsEditor/70.27.1430.972@70.27.1430.972" timestamp="1583516998944" />
-    <state x="275" y="100" key="Vcs.Push.Dialog.v2" timestamp="1591957997358">
+    <state x="275" y="100" key="Vcs.Push.Dialog.v2" timestamp="1592120158442">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="100" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1591957997358" />
-    <state x="358" y="213" key="com.intellij.ide.util.TipDialog" timestamp="1592120052044">
+    <state x="275" y="100" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1592120158442" />
+    <state x="358" y="213" key="com.intellij.ide.util.TipDialog" timestamp="1592205557682">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="358" y="213" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1592120052044" />
+    <state x="358" y="213" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1592205557682" />
     <state x="445" y="311" key="com.intellij.ide.util.TipDialog/70.27.1430.972@70.27.1430.972" timestamp="1584272761148" />
     <state x="328" y="91" width="710" height="546" key="find.popup" timestamp="1591696218062">
       <screen x="0" y="0" width="1366" height="728" />
