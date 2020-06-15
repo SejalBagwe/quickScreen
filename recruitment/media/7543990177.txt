@@ -1,0 +1,33 @@
+import java.time.Instant; //import statement
+import java.io.*;
+import java.math.BigDecimal;
+class abc {
+public static void main (String[] args) {
+
+double hash= (double)Instant.now().toEpochMilli()/1000;
+
+ String str= String.format("%.3f",hash);
+ 
+ System.out.println(str);
+ 
+ char[] arr= str.toCharArray(); int i=0; int sum1=0,sum2=0;
+    while(arr[i]!='.')
+      {
+          sum1+=arr[i]-'0';
+          System.out.println(arr[i]-'0');
+          i++;
+      }
+        i++;
+      while(i<str.length())
+      {
+          sum2+=arr[i]-'0';
+          System.out.println(arr[i]-'0');
+          i++;
+      }
+      //double ans=hash+""+;
+      String s1= hash+"";
+    String ans=new BigDecimal(s1)+"";
+      String f= ans+"-"+sum1+"-"+sum2;
+   System.out.println(f);
+}
+}
