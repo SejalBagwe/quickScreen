@@ -110,7 +110,7 @@ def evaluate_hash(request):
     if result is None or result is "":
         result = ""
 
-    if result.split(' ')[0] == 'success':
+    if result.split(' ')[0] == 'Success':
         end_time = str(datetime.datetime.now())
         attempts = df.loc[0,'Attempts'] + 1
         start_time = df.loc[0,'Start Time']
