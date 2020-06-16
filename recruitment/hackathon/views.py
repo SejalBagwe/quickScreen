@@ -4,7 +4,7 @@ from .functions import hackathon_db
 import datetime
 import pandas as pd
 import os
-from .models import license
+from .models import license, candidate_info
 
 # Create your views here.
 from django.views.decorators.csrf import csrf_exempt
@@ -60,10 +60,10 @@ def test_instructions(request):
             r = license.change_status('Y',key)
 
         test_time = str(datetime.datetime.now() + datetime.timedelta(minutes=25))
-        hackathon_db.insert_data(name, mobile, start_time, test_time, 0, language, 0)
+        candidate_info.insert_data(name, mobile, start_time, test_time, 0, language, 0)
 
         encrypted_mobile = encryption.encrypt(mobile)
-        candidate_data = hackathon_db.get_data()
+        candidate_data = candidate_info.get_data()
         df = candidate_data[candidate_data['Mobile']==encryption.decrypt(encrypted_mobile)].reset_index(drop=True)
         test_time = df.loc[0,'End Time']
         print(test_time)
@@ -91,7 +91,7 @@ def evaluate_hash(request):
     mobile = encryption.decrypt(encrypted_mobile)
     print(mobile)
     print(type(mobile))
-    candidate_data = hackathon_db.get_data()
+    candidate_data = candidate_info.get_data()
     df = candidate_data[candidate_data['Mobile']==mobile].reset_index(drop=True)
     end_time = df.loc[0,'End Time']
     attempts = df.loc[0,'Attempts']
@@ -99,7 +99,7 @@ def evaluate_hash(request):
     attempts += 1
     print(attempts)
     start_time = df.loc[0,'Start Time']
-    hackathon_db.update_data(mobile, start_time, end_time, attempts, 0)
+    candidate_info.update_data(mobile, start_time, end_time, attempts, 0)
 
     if received_hash is None or received_hash == "" or len(received_hash) < 2:
         result = "Invalid Hash"
@@ -111,11 +111,11 @@ def evaluate_hash(request):
     if result is None or result is "":
         result = ""
 
-    if result.split(' ')[0] == 'success':
+    if result.split(' ')[0] == 'Success':
         end_time = str(datetime.datetime.now())
         attempts = df.loc[0,'Attempts'] + 1
         start_time = df.loc[0,'Start Time']
-        hackathon_db.update_data(mobile, start_time, end_time, attempts, 100)
+        candidate_info.update_data(mobile, start_time, end_time, attempts, 100)
     name = df.loc[0,'Name']
     return render(request, "show_result.html", {'msg':[name,result],'mobile': mobile })
 
@@ -203,7 +203,7 @@ def getCode(request):
 
 
 def admin_dash(request):
-    candidate_data = hackathon_db.get_data()
+    candidate_data = candidate_info.get_data()
     print(candidate_data.head(200))
     total = 100/len(candidate_data.index)
     nCandidate  = [list(candidate_data['Language'].str.lower() == 'python').count(True)*total,list(candidate_data['Language'].str.lower() == 'java').count(True)*total,list(candidate_data['Language'].str.lower() == 'nodejs').count(True)*total,list(candidate_data['Language'].str.lower() == 'linux').count(True)*total]
@@ -212,7 +212,7 @@ def admin_dash(request):
     
     nAttempt = [sum(candidate_data[candidate_data['Language'].str.lower() == 'python']['Attempts'])/list(candidate_data['Language'].str.lower() == 'python').count(True),sum(candidate_data[candidate_data['Language'].str.lower() == 'java']['Attempts'])/list(candidate_data['Language'].str.lower() == 'java').count(True),sum(candidate_data[candidate_data['Language'].str.lower() == 'nodejs']['Attempts'])/list(candidate_data['Language'].str.lower() == 'nodejs').count(True),sum(candidate_data[candidate_data['Language'].str.lower() == 'linux']['Attempts'])/list(candidate_data['Language'].str.lower() == 'linux').count(True)]
     
-    pfRate = [list(candidate_data['Score'] != 0).count(True),list(candidate_data['Score'] == 0).count(True)]
+    pfRate = [list(candidate_data['Code'] == "PASS").count(True),list(candidate_data['Code'] != "PASS").count(True)]
     
     return render(request, 'admin_dash.html', {'data_num':nCandidate, 'data_score':avgScore, 'data_attempt':nAttempt, 'data_pass':pfRate })
 
@@ -224,7 +224,7 @@ def admin_license(request):
     return render(request, 'admin_license.html',{'data':license_data})
 
 def admin_data(request):
-    candidate_data1 = hackathon_db.get_data()
+    candidate_data1 = candidate_info.get_data()
     candidate_data = candidate_data1[['Name','Mobile','Date','Time','Minutes','Score','Attempts','Language','Code']]
     candidate_data.columns = ['Name','Mobile','Test_Date','Time','Minutes','Score','Attempts','Language','Code']
     rows = []
@@ -243,13 +243,13 @@ def admin_data(request):
 
 def end_test(request):
     print(request.path)
-    candidate_data = hackathon_db.get_data()
+    candidate_data = candidate_info.get_data()
     mobile = encryption.decrypt(request.path.split('/')[3])
     df = candidate_data[candidate_data['Mobile'] == mobile].reset_index(drop=True)
     start_time = df.loc[0, 'Start Time']
     end_time = df.loc[0, 'End Time']
     attempts = df.loc[0, 'Attempts']
-    hackathon_db.update_data(mobile, start_time, end_time, attempts, 0, Fail=True)
+    candidate_info.update_data(mobile, start_time, end_time, attempts, 0, Fail=True)
     print('here')
     return redirect('/')
 

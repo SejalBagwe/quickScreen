@@ -15,7 +15,7 @@ rows = cur.fetchall()
 #rows = conn.fetchall()
 print(rows)
 conn.close()
-"""
+
 
 
 def insert_data(Name, Mobile, Start_time, End_time, Attempts, Language, Score):
@@ -32,7 +32,7 @@ def insert_data(Name, Mobile, Start_time, End_time, Attempts, Language, Score):
     # conn.commit()
     # conn.close()
     return
-
+"""
 def update_data(Mobile,Start_time, End_time,Attempts,Score,Fail=False):
     # db_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "db", "hackathon.db")
     # conn = sqlite3.connect(db_path)
@@ -62,7 +62,7 @@ def update_data(Mobile,Start_time, End_time,Attempts,Score,Fail=False):
     # conn.commit()
     # conn.close()
     return
-
+'''
 def get_data():
     # print(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),'%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%')
     # db_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "db", "hackathon.db")
@@ -76,7 +76,7 @@ def get_data():
     data.sort_values(by=['Id'], ascending=False,inplace=True)
     data.reset_index(drop=True,inplace=True)
     return data
-'''
+
 def search_license(Key):
     # db_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "db", "hackathon.db")
     # conn = sqlite3.connect(db_path)
