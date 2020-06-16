@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7710c6ac-64dc-47ec-b15c-ad50e1bfd6a5" name="Default Changelist" comment="instruction changes">
+    <list default="true" id="7710c6ac-64dc-47ec-b15c-ad50e1bfd6a5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/recruitment/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/recruitment/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/functions/hackathon_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/functions/hackathon_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/hackathon/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/hackathon/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -347,10 +348,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="275" y="100" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1591957997358" />
-    <state x="358" y="213" key="com.intellij.ide.util.TipDialog" timestamp="1592120052044">
+    <state x="358" y="213" key="com.intellij.ide.util.TipDialog" timestamp="1592264999667">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="358" y="213" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1592120052044" />
+    <state x="358" y="213" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1592264999667" />
     <state x="445" y="311" key="com.intellij.ide.util.TipDialog/70.27.1430.972@70.27.1430.972" timestamp="1584272761148" />
     <state x="328" y="91" width="710" height="546" key="find.popup" timestamp="1591696218062">
       <screen x="0" y="0" width="1366" height="728" />
@@ -364,6 +365,5 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="361" y="155" width="672" height="508" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1591695821487" />
-    <state x="448" y="234" width="672" height="678" key="search.everywhere.popup/70.27.1430.972@70.27.1430.972" timestamp="1583606870239" />
   </component>
 </project>

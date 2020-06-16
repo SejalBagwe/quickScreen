@@ -4,6 +4,7 @@ from .functions import hackathon_db
 import datetime
 import pandas as pd
 import os
+from .models import license
 
 # Create your views here.
 from django.views.decorators.csrf import csrf_exempt
@@ -48,7 +49,7 @@ def test_instructions(request):
         if len(request.POST['license']) != 10:
             return redirect('/')
         key = request.POST['license']
-        license_data = hackathon_db.search_license(key)
+        license_data = license.search_license(key)
         print(license_data)
         if type(license_data) == str:
             if license_data == 'An invalid license key.':
@@ -56,7 +57,7 @@ def test_instructions(request):
         elif license_data.loc[0,'Status'] == 'Y':
             return render(request, "license_result.html", {'result': 'This license key has already been used. Please enter another license key.'})
         else:
-            r = hackathon_db.change_status('Y',key)
+            r = license.change_status('Y',key)
 
         test_time = str(datetime.datetime.now() + datetime.timedelta(minutes=25))
         hackathon_db.insert_data(name, mobile, start_time, test_time, 0, language, 0)
@@ -128,19 +129,20 @@ def key_operation(request):
     if len(key) != 10:
         return JsonResponse({'result': 'Please enter a valid license key.'})	
     if op == 'add':
-        result = hackathon_db.add_license(request.POST['new_key'])	
+        result = license.add_license(request.POST['new_key'])
         return JsonResponse({'result': result})
+        pass
     elif op == 'change':
-        result = hackathon_db.change_status('N',key)
+        result = license.change_status('N',key)
         return JsonResponse({'result': result})
     elif op == 'delete':
-        result = hackathon_db.del_license(key)
+        result = license.del_license(key)
         return JsonResponse({'result': result})
     elif op == 'deleteAll':
-        result = hackathon_db.del_license(key, All= True)
+        result = license.del_license(key, All= True)
         return JsonResponse({'result': result})
     elif op == 'show':
-        license_data = hackathon_db.search_license(key)
+        license_data = license.search_license(key)
         print(license_data)
         if type(license_data) == str:
             if license_data == 'An invalid license key.':
@@ -168,10 +170,10 @@ def key_file_upload(request):
                 data.at[i,col] = int(a)
             data['status'] = 'N'
             for i in range(data.shape[0]):
-                r = hackathon_db.add_license(int(data.at[i,col]))
+                r = license.add_license(int(data.at[i,col]))
                 if r == 'License key already exists.':
 
-                    hackathon_db.change_status(data.at[i,'status'],int(data.at[i,col]))
+                    license.change_status(data.at[i,'status'],int(data.at[i,col]))
 
             result = 'Uploaded Successfully.'
         else:
@@ -215,9 +217,10 @@ def admin_dash(request):
     return render(request, 'admin_dash.html', {'data_num':nCandidate, 'data_score':avgScore, 'data_attempt':nAttempt, 'data_pass':pfRate })
 
 def admin_license(request):
-    license_data = hackathon_db.search_license('ALL')
+    license_data = license.search_license('ALL')
     status_name = {'Y':'Used','N':'New'}
-    license_data['Status'] = pd.Series(license_data['Status']).map(status_name)
+    if license_data.shape[0] != 0:
+        license_data['Status'] = pd.Series(license_data['Status']).map(status_name)
     return render(request, 'admin_license.html',{'data':license_data})
 
 def admin_data(request):
