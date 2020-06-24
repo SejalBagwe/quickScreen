@@ -6,14 +6,15 @@
     <title>Fluid AI Hackathon Start</title>
 		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
 	<div class="container">
-		<h4 align="center" class="text-success label control-label" style="font-size:23px;"> For Any Queries, Contact US at careertest@fluid.ai </h4>
+		<h4 align="center" class="text-success label control-label" style="font-size:23px;"> For Any Queries, Contact US at careertest@fluid.ai or Contact to Ms. Sejal Bagwe at sejal.b@fluid.ai </h4>
 		<div class="row">
 			<div class = "col-md-3"></div>
 				<div class = "col-md-6"><br>
-					<h1 align='center' class="text-success" style="font-size:55px;">Fluid AI</h1><br>
+					<h1 align='center' class="text-success" style="font-size:55px;">Fluid AI</h1>
 					<form action="test_instructions/" method = "post"> 
 					{% csrf_token %}
 					<label class="text-success label control-label" style="font-size:23px;">Name</label>
@@ -23,13 +24,16 @@
 					<label class="text-success label control-label" style="font-size:23px;">License Key</label>
 					<input type='text' class ='form-control' name='license' placeholder='Please enter your mobile number registered on Naukri.com' pattern="[0-9]{10}" title = 'Please Enter 10 digit valid license key' oninput="this.value = this.value.replace(/[^\d]/, '')"><br>
 					<label class="text-success label control-label" style="font-size:23px;">Choose Language</label>&nbsp&nbsp&nbsp&nbsp
-					<select class='btn btn-success dropdown-toggle' name="language">
+					<select id ='lang' class='btn btn-success dropdown-toggle' name="language">
 						<option value="java">JAVA</option>
 						<option value="nodejs">Nodejs</option>
 						<option value="python">Python</option>
 						<option value="linux">Linux</option>
 					</select>
-					<br><br><br>
+					<br><br>
+					<div id = 'instruct'>
+						<label class="text-danger label control-label" align="center" style="font-size:18px;">** Before clicking on Start Test make sure you have running Java platform on your machine</label>
+					</div><br>
 					<button type="submit" class="btn btn-success btn-lg" value='Start Test' style = "margin-left:220px" >Start Test</button>
 					</form>
 				</div>
@@ -37,6 +41,15 @@
 				</div>
 		</div>
 	</div>
-
+<script>
+$(document).ready( function(){
+$('#lang').change( function(){
+l = $('option:selected',this).text()
+$('#instruct').empty();
+$('#instruct').append('<label class="text-danger label control-label" align="center" style="font-size:18px;">** Before clicking on Start Test make sure you have running '+l+' platform on your machine</label>')
+});
+});
+</script>
 </body>
+
 </html>
