@@ -249,7 +249,8 @@ def end_test(request):
     start_time = df.loc[0, 'Start Time']
     end_time = df.loc[0, 'End Time']
     attempts = df.loc[0, 'Attempts']
-    candidate_info.update_data(mobile, start_time, end_time, attempts, 0, Fail=True)
+    if df.loc[0,'Code'] != 'PASS':
+        candidate_info.update_data(mobile, start_time, end_time, attempts, 0, Fail=True)
     print('here')
     return redirect('/')
 
