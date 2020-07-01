@@ -69,6 +69,8 @@ class candidate_info(models.Model):
     Time = models.TextField()
     Minutes = models.IntegerField()
     Code = models.TextField()
+    City = models.TextField()
+    Experience = models.TextField()
 
     def __str__(self):
         return str(self.mobile)
@@ -78,18 +80,18 @@ class candidate_info(models.Model):
         data = candidate_info.objects.all().values()
         data = pd.DataFrame(list(data))
         data.columns = ['Id', 'Name', 'Mobile', 'Start Time', 'End Time', 'Score', 'Attempts', 'Language', 'Date',
-                        'Time', 'Minutes', 'Code']
+                        'Time', 'Minutes', 'Code', 'City', 'Experience']
         data.set_index('Id', inplace=True)
         data.sort_values(by=['Id'], ascending=False, inplace=True)
         data.reset_index(drop=True, inplace=True)
         return data
 
     @staticmethod
-    def insert_data(Name, Mobile, Start_time, End_time, Attempts, Language, Score):
+    def insert_data(Name, Mobile, Start_time, End_time, Attempts, Language, Score, City, Experience):
         minutes = 0
         Date = str(datetime.datetime.strptime(Start_time, '%Y-%m-%d %H:%M:%S.%f').date())
         Time = str(datetime.datetime.strptime(Start_time, '%Y-%m-%d %H:%M:%S.%f').time().replace(microsecond=0))
-        candidate_info.objects.create(Name=Name, mobile=Mobile, Start_time=Start_time, End_time=End_time, Score=Score, Attempts=Attempts, Language=Language, Date=Date, Time=Time, Minutes=minutes,Code="NA")
+        candidate_info.objects.create(Name=Name, mobile=Mobile, Start_time=Start_time, End_time=End_time, Score=Score, Attempts=Attempts, Language=Language, Date=Date, Time=Time, Minutes=minutes,Code="NA", City=City, Experience=Experience)
         return
 
     @staticmethod

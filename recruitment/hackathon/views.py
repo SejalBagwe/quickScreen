@@ -40,6 +40,8 @@ def test_instructions(request):
         language = request.POST['language']
         mobile = request.POST['mobile']
         name = str(request.POST['name'])
+        city = str(request.POST['city'])
+        experience = str(request.POST['experience'])
         
         # if name.lower() == "hr" and mobile == "105":
         #     candidate_data = hackathon_db.get_data()
@@ -60,7 +62,7 @@ def test_instructions(request):
             r = license.change_status('Y',key)
 
         test_time = str(datetime.datetime.now() + datetime.timedelta(minutes=25))
-        candidate_info.insert_data(name, mobile, start_time, test_time, 0, language, 0)
+        candidate_info.insert_data(name, mobile, start_time, test_time, 0, language, 0, city, experience)
 
         encrypted_mobile = encryption.encrypt(mobile)
         candidate_data = candidate_info.get_data()
@@ -204,15 +206,28 @@ def getCode(request):
 
 def admin_dash(request):
     candidate_data = candidate_info.get_data()
-    print(candidate_data.head(200))
     total = 100/len(candidate_data.index)
-    nCandidate  = [list(candidate_data['Language'].str.lower() == 'python').count(True)*total,list(candidate_data['Language'].str.lower() == 'java').count(True)*total,list(candidate_data['Language'].str.lower() == 'nodejs').count(True)*total,list(candidate_data['Language'].str.lower() == 'linux').count(True)*total]
-    
-    avgScore = [sum(candidate_data[candidate_data['Language'].str.lower() == 'python']['Score'])/list(candidate_data['Language'].str.lower() == 'python').count(True),sum(candidate_data[candidate_data['Language'].str.lower() == 'java']['Score'])/list(candidate_data['Language'].str.lower() == 'java').count(True),sum(candidate_data[candidate_data['Language'].str.lower() == 'nodejs']['Score'])/list(candidate_data['Language'].str.lower() == 'nodejs').count(True),sum(candidate_data[candidate_data['Language'].str.lower() == 'linux']['Score'])/list(candidate_data['Language'].str.lower() == 'linux').count(True)]
-    
-    nAttempt = [sum(candidate_data[candidate_data['Language'].str.lower() == 'python']['Attempts'])/list(candidate_data['Language'].str.lower() == 'python').count(True),sum(candidate_data[candidate_data['Language'].str.lower() == 'java']['Attempts'])/list(candidate_data['Language'].str.lower() == 'java').count(True),sum(candidate_data[candidate_data['Language'].str.lower() == 'nodejs']['Attempts'])/list(candidate_data['Language'].str.lower() == 'nodejs').count(True),sum(candidate_data[candidate_data['Language'].str.lower() == 'linux']['Attempts'])/list(candidate_data['Language'].str.lower() == 'linux').count(True)]
-    
-    pfRate = [list(candidate_data['Code'] == "PASS").count(True),list(candidate_data['Code'] != "PASS").count(True)]
+    nCandidate = []
+    avgScore = []
+    nAttempt = []
+    pfRate = []
+    for lang in ['java','python','linux','nodejs']:
+        data = candidate_data[candidate_data['Language'].str.lower() == lang]
+        if data.shape[0] != 0:
+            nCandidate.append(data['Language'].count()*total)
+            avgScore.append(sum(data['Score'])/data['Score'].count())
+            nAttempt.append(sum(data['Attempts'])/data['Attempts'].count())
+        else:
+            nCandidate.append(0)
+            avgScore.append(0)
+            nAttempt.append(0)
+
+    for pf in ['pass','fail','na']:
+        data = candidate_data[candidate_data['Code'].str.lower()==pf]
+        if data.shape[0] != 0:
+            pfRate.append(data['Code'].count())
+        else:
+            pfRate.append(0)
     
     return render(request, 'admin_dash.html', {'data_num':nCandidate, 'data_score':avgScore, 'data_attempt':nAttempt, 'data_pass':pfRate })
 
@@ -225,8 +240,8 @@ def admin_license(request):
 
 def admin_data(request):
     candidate_data1 = candidate_info.get_data()
-    candidate_data = candidate_data1[['Name','Mobile','Date','Time','Minutes','Score','Attempts','Language','Code']]
-    candidate_data.columns = ['Name','Mobile','Test_Date','Time','Minutes','Score','Attempts','Language','Code']
+    candidate_data = candidate_data1[['Name','Mobile','Date','Time','Minutes','Score','Attempts','Language','Code','City','Experience']]
+    candidate_data.columns = ['Name','Mobile','Test_Date','Time','Minutes','Score','Attempts','Language','Code','City','Experience']
     rows = []
     for i in range(candidate_data.shape[0]):
         temp ={}
